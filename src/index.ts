@@ -86,6 +86,7 @@ export {
   TERMS_ASSENT_NOTICE,
   TERMS_PREAMBLE,
   TERMS_SECTIONS,
+  FEE_TERMS_DOC,
 } from "./documents/fee-terms.js";
 export type { TermsBlock, TermsSection } from "./documents/fee-terms.js";
 

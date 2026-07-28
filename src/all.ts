@@ -7,9 +7,11 @@
 // and the integrity test now added a fourth; a document could be published and
 // missing from any of them without anything failing.
 //
-// Fee Terms is deliberately ABSENT: it does not use the LegalDocument model.
-// Consumers that enumerate documents for display must handle it as the special
-// case it is — see FEE_TERMS_VERSION / TERMS_SECTIONS in the index.
+// Fee Terms IS included, via the FEE_TERMS_DOC wrapper. It keeps its own older
+// block shape for the hashed values (TERMS_PREAMBLE / TERMS_SECTIONS, which the
+// consumer fingerprints at every acceptance), and the wrapper simply points at
+// them — so the one document carrying stored legal evidence is also covered by
+// the structural checks, which it never was before.
 // =============================================================
 
 import type { LegalDocument } from "./model.js";
@@ -24,6 +26,7 @@ import { DATA_RETENTION_DOC } from "./documents/data-retention.js";
 import { DO_NOT_SELL_DOC } from "./documents/do-not-sell.js";
 import { DPA_DOC } from "./documents/dpa.js";
 import { FEE_SCHEDULE_DOC } from "./documents/fee-schedule.js";
+import { FEE_TERMS_DOC } from "./documents/fee-terms.js";
 import { GOV_REQUESTS_DOC } from "./documents/government-requests.js";
 import { IMPRINT_DOC } from "./documents/imprint.js";
 import { MODEL_CARD_DOC } from "./documents/model-card.js";
@@ -40,6 +43,7 @@ import { WEBSITE_TERMS_DOC } from "./documents/website-terms.js";
 
 export const ALL_LEGAL_DOCUMENTS: readonly LegalDocument[] = [
   TERMS_DOC,
+  FEE_TERMS_DOC,
   AUP_DOC,
   FEE_SCHEDULE_DOC,
   REFUNDS_DOC,

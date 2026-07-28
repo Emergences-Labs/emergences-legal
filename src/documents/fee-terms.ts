@@ -26,6 +26,8 @@
 // Bumping it forces re-acceptance and must accompany any material edit below.
 // =============================================================
 
+import type { LegalDocument } from "../model.js";
+
 /** Current fee-terms version (clickwrap). Bumping forces every org to
  *  re-accept — `rpc_has_accepted_terms` is keyed per version. CLIENT-SAFE. */
 export const FEE_TERMS_VERSION = "2026-07-03";
@@ -701,3 +703,37 @@ export const TERMS_SECTIONS: TermsSection[] = [
     ],
   },
 ];
+
+// =============================================================
+// Fee Terms as a LegalDocument.
+//
+// A WRAPPER, deliberately — it points at TERMS_PREAMBLE and TERMS_SECTIONS
+// rather than re-authoring them. The consumer's `feeTermsHash()` serializes
+// JSON.stringify({version, preamble, sections}) and stores the digest in
+// `terms_acceptances.terms_hash` for every org that has accepted. That digest
+// depends on key INSERTION ORDER as literally authored above, so re-typing the
+// section literals into "proper" LegalSections would risk changing the
+// fingerprint of a contract people have already signed. Referencing the same
+// objects cannot: they are the same objects. integrity.test.ts proves it by
+// pinning the pre-extraction hash.
+//
+// Why bother: Fee Terms is the one document with legal evidence attached and
+// was the one document no structural check covered.
+// =============================================================
+
+/** Fee Terms in the shared document model, for the manifest, the integrity
+ *  test, and the legal-updates archive. The consumer still renders the page
+ *  with its own hand-rolled renderer. */
+export const FEE_TERMS_DOC: LegalDocument = {
+  slug: "fee-terms",
+  title: "Fee Terms",
+  description:
+    "How NeoWork charges: a 15% placement success fee per accepted hire and " +
+    "usage credits for platform usage, with revoke, guarantee, and attribution " +
+    "protections.",
+  version: FEE_TERMS_VERSION,
+  effectiveDate: TERMS_EFFECTIVE_DATE,
+  preamble: TERMS_PREAMBLE,
+  sections: TERMS_SECTIONS,
+  notice: { label: "Acceptance", text: TERMS_ASSENT_NOTICE },
+};
