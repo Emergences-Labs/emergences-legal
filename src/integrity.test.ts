@@ -25,7 +25,6 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { ALL_LEGAL_DOCUMENTS, legalDocumentBySlug } from "./all.js";
-import { LEGAL_REGISTRY } from "./registry.js";
 import {
   FEE_TERMS_VERSION,
   TERMS_PREAMBLE,
@@ -71,13 +70,9 @@ describe("legal document integrity", () => {
     },
   );
 
-  it("gives every document a registry entry", () => {
-    const registered = new Set(LEGAL_REGISTRY.map((e) => e.slug));
-    const missing = ALL_LEGAL_DOCUMENTS.filter(
-      (doc) => !registered.has(doc.slug),
-    ).map((doc) => doc.slug);
-    expect(missing).toEqual([]);
-  });
+  // "every document has a registry entry" is NOT asserted here on purpose. The
+  // registry maps documents to one application's route hrefs, so it stays in
+  // each consumer — and so does that assertion. See the note in index.ts.
 
   it("keeps slugs unique and resolvable", () => {
     const slugs = ALL_LEGAL_DOCUMENTS.map((doc) => doc.slug);

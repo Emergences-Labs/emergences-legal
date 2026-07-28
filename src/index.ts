@@ -35,16 +35,16 @@ export {
   LEGAL_HQ_ADDRESS,
 } from "./company.js";
 
-export {
-  LEGAL_CATEGORY_LABELS,
-  LEGAL_REGISTRY,
-  footerLegalLinks,
-} from "./registry.js";
-export type {
-  LegalDocStatus,
-  LegalCategory,
-  LegalRegistryEntry,
-} from "./registry.js";
+// THE REGISTRY DELIBERATELY DOES NOT LIVE HERE.
+// `LEGAL_REGISTRY` maps each document to an in-app route href — "/legal/terms",
+// "/trust/security" — with no origin field. That is one application's URL
+// space, not portable document content: the moment a second product consumes
+// this package, those paths are wrong for it. It stays in each consumer, and
+// each consumer keeps the assertion that every document it publishes has an
+// entry (see legal-doc-integrity.test.ts there) — an assertion this package
+// cannot make, because only the consumer knows where it serves them.
+// If it is ever centralized, it must carry `slug` and let the consumer supply
+// the base path.
 
 // ---- Documents authored against the shared LegalDocument model ----
 export * from "./documents/acceptable-use.js";
