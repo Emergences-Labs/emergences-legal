@@ -18,6 +18,7 @@ export const BIAS_AUDIT_EFFECTIVE_DATE = "July 3, 2026";
 
 export const BIAS_AUDIT_DOC: LegalDocument = {
   slug: "bias-audit",
+  scope: "neohuman",
   title: "Bias Audit",
   description:
     "How NeoWork's assessment is independently audited for disparate impact, " +

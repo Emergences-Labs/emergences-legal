@@ -19,6 +19,7 @@ export const MODEL_CARD_EFFECTIVE_DATE = "July 3, 2026";
 
 export const MODEL_CARD_DOC: LegalDocument = {
   slug: "model-card",
+  scope: "neohuman",
   title: "Assessment Model Card",
   description:
     "How the NeoWork assessment works: what it takes in, what it produces, how " +

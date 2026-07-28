@@ -22,6 +22,7 @@ export const TERMS_EFFECTIVE_DATE = "July 3, 2026";
 
 export const TERMS_DOC: LegalDocument = {
   slug: "terms",
+  scope: "neowork",
   title: "Terms of Service",
   description:
     "The master agreement governing use of the NeoWork hiring platform — " +

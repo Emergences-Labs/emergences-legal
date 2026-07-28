@@ -1,0 +1,54 @@
+/* The token contract the renderer depends on, shipped by the package.
+   Importing it is not optional: every colour in LegalDocumentView is a
+   fallback-less var(), and an undefined custom property inherits rather than
+   errors — so a missing import produces a plausible page that is wrong. */
+@import "@emergences/legal/tokens.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap");
+
+:root {
+  /* Surfaces the SHELL needs, beyond the renderer's own contract. */
+  --surface-muted: #f2eee6;
+  --border-strong: rgba(74, 58, 42, 0.22);
+  --brand-strong: #574436;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-3xl: 18px;
+  --radius-full: 9999px;
+  --shadow-card: 0 1px 2px rgba(60, 46, 32, 0.045), 0 8px 22px rgba(60, 46, 32, 0.07);
+
+  /* One text face globally, mono for data. Same decision as the product. */
+  --font-body: "Libre Baskerville", "Noto Serif SC", Georgia, "Times New Roman", serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-muted);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: var(--font-body);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+}
+
+/* Tailwind must come AFTER the token import so the tokens are defined when the
+   utilities that reference them are evaluated. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

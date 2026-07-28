@@ -12,6 +12,7 @@ export const MODERN_SLAVERY_EFFECTIVE_DATE = "July 3, 2026";
 
 export const MODERN_SLAVERY_DOC: LegalDocument = {
   slug: "modern-slavery",
+  scope: "emergences",
   title: "Modern Slavery Statement",
   description:
     "NeoWork's commitment against slavery and human trafficking in its " +

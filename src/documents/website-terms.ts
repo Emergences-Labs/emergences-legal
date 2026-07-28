@@ -38,6 +38,7 @@ export const WEBSITE_TERMS_EFFECTIVE_DATE = "July 28, 2026";
 
 export const WEBSITE_TERMS_DOC: LegalDocument = {
   slug: "website-terms",
+  scope: "website",
   title: "Website Terms of Use",
   description:
     "The terms that govern browsing emergences.ai — separate from the terms " +

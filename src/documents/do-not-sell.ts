@@ -13,6 +13,7 @@ export const DO_NOT_SELL_EFFECTIVE_DATE = "July 3, 2026";
 
 export const DO_NOT_SELL_DOC: LegalDocument = {
   slug: "do-not-sell",
+  scope: "emergences",
   title: "Your Privacy Choices",
   description:
     "Your choices about the sale or sharing of personal information, and how we " +

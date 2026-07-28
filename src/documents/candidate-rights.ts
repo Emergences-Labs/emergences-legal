@@ -16,6 +16,7 @@ export const CANDIDATE_RIGHTS_EFFECTIVE_DATE = "July 3, 2026";
 
 export const CANDIDATE_RIGHTS_DOC: LegalDocument = {
   slug: "candidate-rights",
+  scope: "emergences",
   title: "Candidate Bill of Rights",
   description:
     "The commitments NeoWork makes to every candidate evaluated through the " +

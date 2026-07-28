@@ -17,6 +17,7 @@ export const SUBPROCESSORS_EFFECTIVE_DATE = "July 3, 2026";
 
 export const SUBPROCESSORS_DOC: LegalDocument = {
   slug: "subprocessors",
+  scope: "emergences",
   title: "Sub-processors",
   description:
     "The third-party service providers NeoWork uses to process personal data, " +

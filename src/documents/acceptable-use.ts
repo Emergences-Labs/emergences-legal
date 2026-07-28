@@ -16,6 +16,7 @@ export const AUP_EFFECTIVE_DATE = "July 3, 2026";
 
 export const AUP_DOC: LegalDocument = {
   slug: "acceptable-use",
+  scope: "emergences",
   title: "Acceptable Use Policy",
   description:
     "The rules for using the NeoWork platform responsibly and lawfully — " +

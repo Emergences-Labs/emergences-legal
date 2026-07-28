@@ -18,6 +18,7 @@ export const DPA_EFFECTIVE_DATE = "July 3, 2026";
 
 export const DPA_DOC: LegalDocument = {
   slug: "dpa",
+  scope: "emergences",
   title: "Data Processing Addendum",
   description:
     "NeoWork's data-protection commitments as a processor of your data, " +

@@ -16,6 +16,7 @@ export const ACCESSIBILITY_EFFECTIVE_DATE = "July 3, 2026";
 
 export const ACCESSIBILITY_DOC: LegalDocument = {
   slug: "accessibility",
+  scope: "emergences",
   title: "Accessibility",
   description:
     "NeoWork's commitment to an accessible platform and assessment, our " +

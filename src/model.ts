@@ -42,9 +42,32 @@ export interface LegalSummaryPoint {
   text: string;
 }
 
+/**
+ * Which product or entity a document governs.
+ *
+ * REQUIRED on every document, deliberately. With one product it never mattered
+ * and nothing recorded it; with two, it is the first thing a reader needs and
+ * the last thing anyone would remember to add by hand. Making it a field the
+ * type system demands is the difference between a fact and a habit.
+ *
+ * `emergences` means it binds the entity and applies across every product.
+ * `website` is narrower still: the marketing site only.
+ */
+export type LegalScope = "emergences" | "neowork" | "neohuman" | "website";
+
+/** Reader-facing label for each scope, used in the ledger and the index chip. */
+export const LEGAL_SCOPE_LABELS: Record<LegalScope, string> = {
+  emergences: "Emergences",
+  neowork: "NeoWork",
+  neohuman: "NeoHuman",
+  website: "emergences.ai",
+};
+
 export interface LegalDocument {
   /** Route slug under /legal (e.g. "privacy"). */
   slug: string;
+  /** Which product or entity this document governs. */
+  scope: LegalScope;
   /** Document title, shown in the masthead and <title>. */
   title: string;
   /** One-line description for <meta> and the /legal index. */

@@ -18,6 +18,7 @@ export const SECURITY_EFFECTIVE_DATE = "July 3, 2026";
 
 export const SECURITY_DOC: LegalDocument = {
   slug: "security",
+  scope: "emergences",
   title: "Security",
   description:
     "How NeoWork secures the platform and the personal data it processes — " +

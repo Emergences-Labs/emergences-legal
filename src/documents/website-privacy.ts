@@ -46,6 +46,7 @@ export const WEBSITE_PRIVACY_EFFECTIVE_DATE = "July 28, 2026";
 
 export const WEBSITE_PRIVACY_DOC: LegalDocument = {
   slug: "website-privacy",
+  scope: "website",
   title: "Website Privacy Notice",
   description:
     "For visitors to emergences.ai: what we collect on our website, why, and " +

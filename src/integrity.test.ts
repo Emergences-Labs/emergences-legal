@@ -25,6 +25,7 @@
 import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { ALL_LEGAL_DOCUMENTS, legalDocumentBySlug } from "./all.js";
+import { LEGAL_SCOPE_LABELS } from "./model.js";
 import {
   FEE_TERMS_VERSION,
   TERMS_PREAMBLE,
@@ -73,6 +74,16 @@ describe("legal document integrity", () => {
   // "every document has a registry entry" is NOT asserted here on purpose. The
   // registry maps documents to one application's route hrefs, so it stays in
   // each consumer — and so does that assertion. See the note in index.ts.
+
+  it.each(ALL_LEGAL_DOCUMENTS.map((doc) => [doc.slug, doc] as const))(
+    "%s declares which product it governs",
+    (_slug, doc) => {
+      // The type already demands it. This asserts the VALUE is one the reader
+      // will see rendered, so a scope added by a future document cannot be a
+      // string the label map has no entry for.
+      expect(Object.keys(LEGAL_SCOPE_LABELS)).toContain(doc.scope);
+    },
+  );
 
   it("keeps slugs unique and resolvable", () => {
     const slugs = ALL_LEGAL_DOCUMENTS.map((doc) => doc.slug);

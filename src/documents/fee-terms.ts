@@ -726,6 +726,7 @@ export const TERMS_SECTIONS: TermsSection[] = [
  *  with its own hand-rolled renderer. */
 export const FEE_TERMS_DOC: LegalDocument = {
   slug: "fee-terms",
+  scope: "neowork",
   title: "Fee Terms",
   description:
     "How NeoWork charges: a 15% placement success fee per accepted hire and " +

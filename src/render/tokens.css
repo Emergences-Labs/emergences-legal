@@ -1,0 +1,74 @@
+/* =============================================================
+   The complete token contract LegalDocumentView depends on.
+
+   IT IS SHIPPED WITH THE RENDERER BECAUSE UNDEFINED TOKENS INHERIT.
+   Every colour and radius in the renderer is written as `var(--x)` with no
+   fallback. A host that defines twelve of the thirteen does not throw, does not
+   warn, and does not render a broken page — it renders a plausible one that is
+   quietly wrong, in the one place where "looks fine" is not good enough.
+
+   A host that already defines these (the product's globals.css does) can ignore
+   this file. A host that does not — the legal site — imports it.
+
+   The @media print block is not decoration either. It is the only thing that
+   turns a dark-mode reader's screen into a black-on-white instrument when they
+   print or save a PDF of a contract, and it is scoped to `.legal-doc`, which
+   the host must put on the shell element wrapping the document.
+   ============================================================= */
+
+:root {
+  /* Text */
+  --text-primary: #2b2722;
+  --text-secondary: #5c5147;
+  --text-muted: #6f665c;
+
+  /* Surfaces */
+  --surface-card: #fffdf8;
+  --surface-inset: #f1ece3;
+  --surface-hover: #f3efe7;
+
+  /* Borders */
+  --border-subtle: rgba(74, 58, 42, 0.08);
+
+  /* Brand */
+  --brand: #7c6249;
+  --brand-border: rgba(124, 98, 73, 0.26);
+  --brand-subtle: rgba(124, 98, 73, 0.1);
+
+  /* Focus + radii */
+  --focus-ring: #2f74cf;
+  --radius-xs: 6px;
+  --radius-lg: 12px;
+}
+
+@media print {
+  .legal-doc {
+    --surface-page: #ffffff;
+    --surface-card: #ffffff;
+    --surface-muted: #ffffff;
+    --surface-subtle: #ffffff;
+    --surface-hover: transparent;
+    --surface-inset: #f6f2ea;
+    --text-primary: #1b1a17;
+    --text-secondary: #33302b;
+    --text-muted: #5a544c;
+    --border-subtle: rgba(0, 0, 0, 0.14);
+    --border-default: rgba(0, 0, 0, 0.22);
+    --border-strong: rgba(0, 0, 0, 0.32);
+    --brand: #6a523e;
+    --brand-bg: #6a523e;
+    --brand-strong: #574436;
+    --brand-border: rgba(106, 82, 62, 0.4);
+    --brand-subtle: rgba(106, 82, 62, 0.08);
+    background: #ffffff !important;
+  }
+  .legal-doc .legal-sheet {
+    box-shadow: none !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+  .legal-doc h1,
+  .legal-doc h2 {
+    break-after: avoid;
+  }
+}

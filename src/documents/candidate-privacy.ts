@@ -17,6 +17,7 @@ export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "July 22, 2026";
 
 export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
   slug: "candidate-privacy",
+  scope: "neohuman",
   title: "Candidate Privacy Notice",
   description:
     "For candidates: what NeoWork collects when you take an assessment, how " +

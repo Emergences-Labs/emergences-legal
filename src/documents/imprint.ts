@@ -13,6 +13,7 @@ export const IMPRINT_EFFECTIVE_DATE = "July 3, 2026";
 
 export const IMPRINT_DOC: LegalDocument = {
   slug: "imprint",
+  scope: "emergences",
   title: "Imprint & Contact",
   description: "Who operates NeoWork, and how to reach us.",
   version: IMPRINT_VERSION,

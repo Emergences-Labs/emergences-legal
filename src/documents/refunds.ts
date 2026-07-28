@@ -14,6 +14,7 @@ export const REFUNDS_EFFECTIVE_DATE = "July 3, 2026";
 
 export const REFUNDS_DOC: LegalDocument = {
   slug: "refunds",
+  scope: "neowork",
   title: "Refunds & Cancellation",
   description:
     "How subscription cancellation, prepaid credits, and refunds work on " +

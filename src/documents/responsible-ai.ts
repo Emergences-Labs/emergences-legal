@@ -16,6 +16,7 @@ export const RESPONSIBLE_AI_EFFECTIVE_DATE = "July 3, 2026";
 
 export const RESPONSIBLE_AI_DOC: LegalDocument = {
   slug: "responsible-ai",
+  scope: "emergences",
   title: "Responsible AI",
   description:
     "How NeoWork governs the AI used to evaluate candidates — human oversight, " +

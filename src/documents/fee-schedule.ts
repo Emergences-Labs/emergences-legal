@@ -18,6 +18,7 @@ export const FEE_SCHEDULE_EFFECTIVE_DATE = "July 3, 2026";
 
 export const FEE_SCHEDULE_DOC: LegalDocument = {
   slug: "fee-schedule",
+  scope: "neowork",
   title: "Fee Schedule",
   description:
     "Current subscription plans, the placement fee, and how usage credits are " +

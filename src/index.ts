@@ -23,7 +23,9 @@ export type {
   LegalSection,
   LegalSummaryPoint,
   LegalDocument,
+  LegalScope,
 } from "./model.js";
+export { LEGAL_SCOPE_LABELS } from "./model.js";
 
 export {
   LEGAL_ENTITY,

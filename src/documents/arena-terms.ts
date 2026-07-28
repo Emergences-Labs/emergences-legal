@@ -19,6 +19,7 @@ export const ARENA_TERMS_EFFECTIVE_DATE = "July 22, 2026";
 
 export const ARENA_TERMS_DOC: LegalDocument = {
   slug: "arena-terms",
+  scope: "neohuman",
   title: "Arena Assessment Terms",
   description:
     "For public takers: what you agree to when you start an assessment from " +

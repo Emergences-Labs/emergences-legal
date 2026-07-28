@@ -18,6 +18,7 @@ export const DATA_RETENTION_EFFECTIVE_DATE = "July 3, 2026";
 
 export const DATA_RETENTION_DOC: LegalDocument = {
   slug: "data-retention",
+  scope: "emergences",
   title: "Data Retention & Deletion",
   description:
     "How long NeoWork keeps each category of data, and how deletion works.",

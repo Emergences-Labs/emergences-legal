@@ -22,6 +22,7 @@ export const PRIVACY_EFFECTIVE_DATE = "July 3, 2026";
 
 export const PRIVACY_DOC: LegalDocument = {
   slug: "privacy",
+  scope: "neowork",
   title: "Privacy Policy",
   description:
     "How NeoWork collects, uses, shares, and protects personal data — for the " +

@@ -13,6 +13,7 @@ export const GOV_REQUESTS_EFFECTIVE_DATE = "July 3, 2026";
 
 export const GOV_REQUESTS_DOC: LegalDocument = {
   slug: "government-requests",
+  scope: "emergences",
   title: "Government & Law-Enforcement Requests",
   description:
     "How NeoWork responds to government and law-enforcement requests for data.",

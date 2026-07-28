@@ -22,6 +22,7 @@ export const COOKIES_EFFECTIVE_DATE = "July 4, 2026";
 
 export const COOKIES_DOC: LegalDocument = {
   slug: "cookies",
+  scope: "neowork",
   title: "Cookie Policy",
   description:
     "The cookies and similar technologies NeoWork uses, why, and how to " +
