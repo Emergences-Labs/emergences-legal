@@ -68,6 +68,21 @@ unique slug. Ported from `neohuman-hiring`, where it was written after the two
 emergences.ai website documents were found published with no version, no
 effective date, and a clause numbering that skipped 1.
 
+## Deploying the site
+
+`site/` is the Next app behind `legal.emergences.ai`.
+
+**Vercel's Root Directory must be set to `site`.** With it left at the repo root,
+Vercel installs THIS package as the project, which runs its `prepare` script —
+and a production install has no devDependencies, so it fails with
+`tsc: command not found`. That is what the first deploy did.
+
+The site compiles the package itself in `prebuild`, using its own TypeScript. A
+`file:` dependency is symlinked and npm never runs its `prepare`, so nothing
+else would build `dist/` — and a missing `dist/` surfaces as "cannot find module
+@emergences/legal/render", which reads like a bad import rather than a missing
+build step.
+
 ## Publishing a change
 
 1. Edit the document. Bump its `version` and `effectiveDate`.
