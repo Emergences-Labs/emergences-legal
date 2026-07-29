@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "prebuild": "tsc -p ../tsconfig.build.json --outDir ../dist && cp ../src/render/tokens.css ../dist/render/tokens.css"
+    "prebuild": "npm --prefix .. install --include=dev --no-audit --no-fund"
   },
   "dependencies": {
     "@emergences/legal": "file:..",
