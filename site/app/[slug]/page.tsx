@@ -4,6 +4,7 @@ import type { ReactElement } from "react";
 import { ALL_LEGAL_DOCUMENTS, legalDocumentBySlug } from "@emergences/legal";
 import { LegalDocumentView } from "@emergences/legal/render";
 import { PrintButton } from "../print-button";
+import { PENDING_FRAMER_RETIREMENT } from "../pending-framer-retirement";
 
 export const dynamic = "force-static";
 
@@ -18,7 +19,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const doc = legalDocumentBySlug((await params).slug);
   if (!doc) return {};
-  return { title: doc.title, description: doc.description };
+  return {
+    title: doc.title,
+    description: doc.description,
+    ...(PENDING_FRAMER_RETIREMENT.has(doc.slug)
+      ? { robots: { index: false, follow: true } }
+      : {}),
+  };
 }
 
 export default async function LegalDocumentPage({
