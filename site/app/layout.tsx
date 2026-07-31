@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
               <Link
                 href="/"
-                className="font-serif text-[17px] font-bold tracking-[-0.01em] text-[var(--text-primary)] no-underline hover:text-[var(--brand-strong)]"
+                className="font-serif text-[17px] font-normal tracking-[-0.01em] text-[var(--text-primary)] no-underline hover:text-[var(--brand-strong)]"
               >
                 {LEGAL_ENTITY}
               </Link>

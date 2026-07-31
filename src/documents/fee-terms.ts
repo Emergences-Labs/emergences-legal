@@ -721,9 +721,11 @@ export const TERMS_SECTIONS: TermsSection[] = [
 // was the one document no structural check covered.
 // =============================================================
 
-/** Fee Terms in the shared document model, for the manifest, the integrity
- *  test, and the legal-updates archive. The consumer still renders the page
- *  with its own hand-rolled renderer. */
+/** Fee Terms in the shared document model. BOTH surfaces render from this since
+ *  2026-07-31 — the published page on the legal site and the product's
+ *  acceptance page, whose hand-rolled copy of the renderer was deleted. That
+ *  copy had drifted: it carried a plain-language summary the published document
+ *  did not, so one contract said different things at its two addresses. */
 export const FEE_TERMS_DOC: LegalDocument = {
   slug: "fee-terms",
   scope: "neowork",
@@ -737,4 +739,38 @@ export const FEE_TERMS_DOC: LegalDocument = {
   preamble: TERMS_PREAMBLE,
   sections: TERMS_SECTIONS,
   notice: { label: "Acceptance", text: TERMS_ASSENT_NOTICE },
+  // Non-binding orientation, lifted from the product page it used to live on.
+  // The credits point is REWRITTEN: it said usage credits were "included
+  // monthly with a subscription", which the 2026-07-05 billing reform retired.
+  // Subscriptions grant zero credits, the only free allowance is a one-time
+  // signup trial, and paid credits come from prepaid packs — so that sentence
+  // was a false pricing statement sitting on the page where a customer accepts
+  // the fee. Nothing here reaches feeTermsHash(), which digests version,
+  // preamble and sections only.
+  summary: [
+    {
+      label: "Usage credits",
+      text:
+        "Platform usage is metered in prepaid credits. New organizations start " +
+        "with a one-time trial allowance; after that you buy credit packs. " +
+        "Prices are on your plan and checkout screens.",
+    },
+    {
+      label: "15% placement fee",
+      text:
+        "When a candidate you sourced through NeoWork accepts an offer, we " +
+        "invoice 15% of their first-year base salary, net 30. It applies to " +
+        "every hire.",
+    },
+    {
+      label: "Your protections",
+      text:
+        "7-day revoke if an accepted offer falls through, a 90-day leave " +
+        "guarantee (full refund), and a 14-day attribution window.",
+    },
+  ],
+  colophon:
+    "These Fee Terms, the Fee Schedule, and the Terms of Service together form " +
+    "the Agreement. When we make material changes we will update the version " +
+    "and notify subscribed organizations before the changes take effect.",
 };

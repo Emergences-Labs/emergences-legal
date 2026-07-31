@@ -88,7 +88,7 @@ export default function LegalIndexPage(): ReactElement {
         <p className="m-0 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--text-muted)]">
           {LEGAL_ENTITY}
         </p>
-        <h1 className="mt-2.5 font-serif text-[30px] font-bold leading-[1.12] tracking-[-0.02em] text-[var(--text-primary)] sm:text-[36px]">
+        <h1 className="mt-2.5 font-serif text-[30px] font-normal leading-[1.14] tracking-[-0.02em] text-[var(--text-primary)] sm:text-[36px]">
           Legal &amp; Trust
         </h1>
         <p className="mt-4 max-w-[46ch] text-[14px] leading-[1.7] text-[var(--text-secondary)]">
