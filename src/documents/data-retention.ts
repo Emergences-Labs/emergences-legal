@@ -13,8 +13,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const DATA_RETENTION_VERSION = "2026-07-03";
-export const DATA_RETENTION_EFFECTIVE_DATE = "July 3, 2026";
+export const DATA_RETENTION_VERSION = "2026-09-26";
+export const DATA_RETENTION_EFFECTIVE_DATE = "September 26, 2026";
 
 export const DATA_RETENTION_DOC: LegalDocument = {
   slug: "data-retention",
@@ -31,8 +31,8 @@ export const DATA_RETENTION_DOC: LegalDocument = {
       text: "Each category has a default period; we delete or de-identify data when it lapses, unless the law requires us to keep it.",
     },
     {
-      label: "Recordings go early",
-      text: "We delete raw assessment recordings soon after scoring, and always within 30 days of a candidate's request.",
+      label: "Recordings have a clock",
+      text: "Assessment recordings and captured session activity are deleted 12 months after the assessment by default, sooner if the employer chooses, and within 30 days of a candidate's verified request.",
     },
     {
       label: "You can ask us to delete",
@@ -66,9 +66,9 @@ export const DATA_RETENTION_DOC: LegalDocument = {
               "Employer-configurable up to employment + 1 year.",
             ],
             [
-              "Assessment session recordings / video",
-              "Purged 30 days after scoring (max 90 days)",
-              "Always deleted within 30 days of a candidate's request.",
+              "Assessment session recordings and captured activity (screen recording, on-screen text, typing, copy and paste, app activity)",
+              "12 months after the assessment",
+              "Employer-configurable to a shorter period. Kept longer only where the law requires (for example, California's four-year rule for hiring records) or under a legal hold. Deleted within 30 days of a candidate's verified request, unless the law requires us to keep it.",
             ],
             [
               "AI evaluation outputs (scores, reports)",
@@ -116,11 +116,14 @@ export const DATA_RETENTION_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "Raw assessment recordings are the most sensitive and shortest-lived " +
-            "data we hold. Our commitment is to delete them once scoring is " +
-            "complete, and always within 30 days of a candidate's request, and to " +
-            "keep the derived evaluation (not the footage) as the record of the " +
-            "assessment.",
+            "Assessment recordings are among the most sensitive data we hold. " +
+            "Before the employer can review a recording, it is screened " +
+            "automatically and passages that show personal content are removed. " +
+            "We keep recordings and captured session activity for 12 months after " +
+            "the assessment by default, so the employer can review how the work " +
+            "was done during its hiring process; the employer can choose a shorter " +
+            "period. We delete them within 30 days of a candidate's verified " +
+            "request, unless the law requires us to keep them.",
         },
         {
           kind: "callout",
@@ -157,8 +160,10 @@ export const DATA_RETENTION_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "Customer administrators can delete their organization's data, which " +
-            "cascades to associated records and cancels billing. Candidates can " +
+            "Customer administrators can delete their organization's data in the " +
+            "product, which cascades to associated records and cancels billing, " +
+            "and can ask us to delete the assessment recordings and session data " +
+            "held for their organization. Candidates can " +
             "request deletion via the employer or us. On a verified request we " +
             "delete the personal data within the period the law requires, except " +
             "where we must retain limited data for legal, tax, security, or " +

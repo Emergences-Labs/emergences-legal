@@ -12,8 +12,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const CANDIDATE_PRIVACY_VERSION = "2026-07-22";
-export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "July 22, 2026";
+export const CANDIDATE_PRIVACY_VERSION = "2026-09-26";
+export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "September 26, 2026";
 
 export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
   slug: "candidate-privacy",
@@ -42,8 +42,9 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
   ],
   preamble:
     `This notice explains how your personal data is handled across the ` +
-    `NeoHuman candidate platform (reskill.neo-human.ai), the NeoHuman desktop ` +
-    `app assessments run in, and public Arena postings — all operated by ` +
+    `NeoHuman candidate platform (reskill.neo-human.ai), the ${PRODUCT_NAME} ` +
+    `assessment app (app.neo-work.ai) and the ${PRODUCT_NAME} desktop app that ` +
+    `assessments run in, and public Arena postings — all operated by ` +
     `${PRODUCT_NAME}. Two roles apply. For your NeoHuman account and profile — ` +
     `things you create yourself — ${PRODUCT_NAME} is responsible for your ` +
     `data. For an assessment, the organization behind it (the “Employer”) ` +
@@ -64,17 +65,58 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
             "Your NeoHuman account and profile — the preferences, links, and experience you add yourself (target roles, salary floor, locations, skills, socials, imported positions).",
             "Identity verification — we store only the verification status and timestamps. Your documents and biometric data stay with our verification partner (Stripe Identity), which shows you its own consent and retention notice in the flow.",
             "Your work — the files, code, project, or video you submit for the assessment.",
-            "A record of your assessment session, including how you worked with AI tools during the task.",
+            "A record of your assessment session, including how you worked with AI tools during the task — described in detail below.",
             "Professional background — details from a résumé you provide or, where applicable, from a public professional profile.",
             "The evaluation the platform generates about your work.",
             "Your pseudonymous handle, where you keep the public-profile option on.",
             "Technical data such as your IP address, used to keep the assessment secure.",
           ],
         },
+        {
+          kind: "sub",
+          heading: "During an assessment session",
+          text:
+            `While you take an assessment in the ${PRODUCT_NAME} desktop app, it ` +
+            `records your screen; the apps and windows you use; text shown on ` +
+            `screen that your operating system makes available to the app; what ` +
+            `you type and what you copy and paste; and information about files ` +
+            `you create, change, or submit while you work. This is how the ` +
+            `Employer sees how you worked, including how you used AI tools. The ` +
+            `app never turns on your camera or microphone. Capture starts when ` +
+            `you begin the assessment and stops when you finish, and nothing is ` +
+            `captured while you pause.`,
+        },
       ],
     },
     {
       n: 2,
+      title: "Personal content on your screen",
+      blocks: [
+        {
+          kind: "p",
+          text:
+            "A screen recording can catch things that have nothing to do with " +
+            "the assessment. We limit that in two ways:",
+        },
+        {
+          kind: "list",
+          items: [
+            "On your computer: while a messaging, email, password-manager, or video-meeting app is in front, the desktop app blanks the recording and does not capture that app's text.",
+            "Before anyone reviews it: the rest of the session is screened automatically with AI, and passages that show personal content — such as private messages, email, personal files, or account and identity pages — are removed before the Employer sees the recording or anything derived from it.",
+          ],
+        },
+        {
+          kind: "callout",
+          label: "Please help",
+          text:
+            "Automated screening can miss things. Close personal apps, tabs, and " +
+            "notifications before you start, and pause if something personal " +
+            "comes up.",
+        },
+      ],
+    },
+    {
+      n: 3,
       title: "Where your data comes from",
       blocks: [
         {
@@ -89,7 +131,7 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 3,
+      n: 4,
       title: "How the AI evaluation works",
       blocks: [
         {
@@ -110,10 +152,16 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
             "uncertain observations for human review rather than penalize them, " +
             "and never to infer protected characteristics.",
         },
+        {
+          kind: "p",
+          text:
+            "If your assessment includes a guide you can chat with, that guide " +
+            "is an AI system, not a person.",
+        },
       ],
     },
     {
-      n: 4,
+      n: 5,
       title: "Why your data is used",
       blocks: [
         {
@@ -127,7 +175,7 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 5,
+      n: 6,
       title: "Your rights",
       blocks: [
         {
@@ -153,7 +201,7 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 6,
+      n: 7,
       title: "How long your data is kept",
       blocks: [
         {
@@ -161,12 +209,16 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           text:
             "The Employer decides how long to keep your assessment data for its " +
             "hiring process, within the limits of our Data Retention & Deletion " +
-            "Policy. You can ask the Employer, or us, about deletion at any time.",
+            "Policy. By default, the recording and the activity captured during " +
+            "an assessment session are deleted 12 months after the assessment, " +
+            "unless the Employer chooses a shorter period, the law requires us to " +
+            "keep them longer, or they are needed for a legal claim. You can ask " +
+            "the Employer, or us, about deletion at any time.",
         },
       ],
     },
     {
-      n: 7,
+      n: 8,
       title: "Security and where data is processed",
       blocks: [
         {
@@ -174,13 +226,17 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           text:
             "We protect your data with encryption, access controls, and " +
             "monitoring, and use vetted service providers listed on our " +
-            "Sub-processors page. We are based in the United States and may process " +
-            "data there and elsewhere with appropriate safeguards.",
+            "Sub-processors page. Your data is stored in the United States, and " +
+            "some of our providers may process it in other countries. When data " +
+            "about people in the EEA, the UK, or Switzerland is transferred, we " +
+            "rely on the EU–U.S. Data Privacy Framework where a provider is " +
+            "certified, and otherwise on the European Commission's Standard " +
+            "Contractual Clauses (with the UK Addendum).",
         },
       ],
     },
     {
-      n: 8,
+      n: 9,
       title: "Contact",
       blocks: [
         {

@@ -12,8 +12,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const SUBPROCESSORS_VERSION = "2026-07-03";
-export const SUBPROCESSORS_EFFECTIVE_DATE = "July 3, 2026";
+export const SUBPROCESSORS_VERSION = "2026-09-26";
+export const SUBPROCESSORS_EFFECTIVE_DATE = "September 26, 2026";
 
 export const SUBPROCESSORS_DOC: LegalDocument = {
   slug: "subprocessors",
@@ -78,7 +78,7 @@ export const SUBPROCESSORS_DOC: LegalDocument = {
             ],
             [
               "Additional model providers",
-              "Optional alternative AI models (e.g. OpenAI, Google), when selected",
+              "Optional alternative AI models (e.g. OpenAI, Google), when selected; for candidate assessments see section 3",
               "The same prompt content as the primary provider",
             ],
             [
@@ -102,6 +102,62 @@ export const SUBPROCESSORS_DOC: LegalDocument = {
     },
     {
       n: 3,
+      title: "Candidate assessments",
+      blocks: [
+        {
+          kind: "p",
+          text:
+            `When a candidate takes an assessment in the ${PRODUCT_NAME} ` +
+            `assessment app (app.neo-work.ai) or the ${PRODUCT_NAME} desktop app, ` +
+            `their data is processed by the providers below, in addition to ` +
+            `Vercel and Supabase (section 1) and the email and error-monitoring ` +
+            `providers in section 4.`,
+        },
+        {
+          kind: "table",
+          columns: ["Sub-processor", "Purpose", "Data processed"],
+          rows: [
+            [
+              "Google Cloud",
+              "Storage and background processing for assessment sessions (Cloud Storage, Cloud Run), in the United States",
+              "Screen recordings, captured session activity, submitted work",
+            ],
+            [
+              "Google (Gemini models, via Vertex AI and the Gemini API)",
+              "Screening recordings for personal content; analyzing how the work was done; one of the models that scores the work; the in-assessment AI guide",
+              "Screen recordings, captured session activity, submitted work, guide conversations",
+            ],
+            [
+              "OpenAI",
+              "Extracting evidence from the work; one of the models that scores it; the in-assessment AI guide",
+              "Submitted work, session evidence, guide conversations",
+            ],
+            [
+              "Anthropic",
+              "One of the models that scores the work",
+              "Submitted work and session evidence",
+            ],
+            [
+              "Reducto",
+              "Reading the text and structure of submitted documents",
+              "Submitted documents",
+            ],
+            [
+              "Datalab",
+              "Converting some document formats (such as office and e-book files) so they can be read",
+              "Submitted documents",
+            ],
+            [
+              "xAI",
+              "Backup reading of documents that contain only images (rarely used)",
+              "Page images of submitted documents",
+            ],
+          ],
+        },
+      ],
+    },
+    {
+      n: 4,
       title: "Business operations",
       blocks: [
         {
@@ -138,15 +194,14 @@ export const SUBPROCESSORS_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "The candidate assessment runtime is operated by our affiliated " +
-            "service, which shares the same database and safeguards. Minor " +
-            "providers that process little or no personal data (for example, " +
-            "company-logo lookup) are omitted for clarity and disclosed on request.",
+            "Minor providers that process little or no personal data (for " +
+            "example, company-logo lookup) are omitted for clarity and disclosed " +
+            "on request.",
         },
       ],
     },
     {
-      n: 4,
+      n: 5,
       title: "Changes and notification",
       blocks: [
         {
