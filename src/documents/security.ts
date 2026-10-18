@@ -1,20 +1,20 @@
 // =============================================================
 // Trust / Security overview — the public page an enterprise security review
-// asks for by name. Summarizes the controls that already exist internally
+// asks for by name. Summarizes the platform's security practices
 // (docs/SOC2_READINESS.md, SOC2_REMEDIATION.md): encryption, tenant isolation
 // (RLS), access control, monitoring, change management, incident response.
 //
-// HONESTY: SOC 2 is NOT claimed as attested — the readiness doc states the
-// technical controls are implemented but formal Type II attestation is pending.
-// This page says exactly that. Do not upgrade the wording to "SOC 2 certified"
+// HONESTY: SOC 2 is NOT claimed as attested. Control implementation and
+// validation remain in progress; readiness is not a completed examination.
+// Do not upgrade the wording to "SOC 2 certified"
 // until a CPA firm issues the report.
 // =============================================================
 
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const SECURITY_VERSION = "2026-07-03";
-export const SECURITY_EFFECTIVE_DATE = "July 3, 2026";
+export const SECURITY_VERSION = "2026-10-18";
+export const SECURITY_EFFECTIVE_DATE = "October 18, 2026";
 
 export const SECURITY_DOC: LegalDocument = {
   slug: "security",
@@ -112,9 +112,9 @@ export const SECURITY_DOC: LegalDocument = {
           kind: "callout",
           label: "SOC 2 — in progress",
           text:
-            "Our technical controls are implemented and verified, mapped to the " +
-            "SOC 2 Trust Services Criteria. Formal SOC 2 (Type II) attestation by " +
-            "an independent CPA firm is in progress; we do not yet claim a " +
+            "We are implementing and validating technical controls mapped to the " +
+            "SOC 2 Trust Services Criteria and preparing for an independent " +
+            "SOC 2 (Type II) examination. We do not yet claim a " +
             "completed attestation. Contact us for our current status and, once " +
             "available, our report or bridge letter under NDA.",
         },
