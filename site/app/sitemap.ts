@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.5,
     },
+    {
+      url: `${SITE_ORIGIN}/product-updates`,
+      lastModified: new Date("2026-10-20"),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    },
     ...ALL_LEGAL_DOCUMENTS.filter(
       (doc) => !PENDING_FRAMER_RETIREMENT.has(doc.slug),
     ).map((doc) => ({

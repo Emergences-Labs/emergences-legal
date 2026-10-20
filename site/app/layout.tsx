@@ -23,14 +23,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <div className="legal-doc min-h-screen bg-[var(--surface-muted)] text-[var(--text-primary)]">
           <header className="sticky top-0 z-20 border-b border-[var(--border-subtle)] bg-[var(--surface-card)]/85 backdrop-blur-md print:hidden">
-            <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+            <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
               <Link
                 href="/"
                 className="font-serif text-[17px] font-normal tracking-[-0.01em] text-[var(--text-primary)] no-underline hover:text-[var(--brand-strong)]"
               >
                 {LEGAL_ENTITY}
               </Link>
-              <nav className="flex gap-1">
+              <nav className="flex flex-wrap gap-1">
                 <Link
                   href="/"
                   className="rounded-[var(--radius-sm)] px-2.5 py-1.5 text-[12.5px] font-medium text-[var(--text-secondary)] no-underline hover:bg-[var(--surface-hover)] hover:text-[var(--text-primary)]"
@@ -42,6 +42,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   className="rounded-[var(--radius-sm)] px-2.5 py-1.5 text-[12.5px] font-medium text-[var(--text-secondary)] no-underline hover:bg-[var(--surface-hover)] hover:text-[var(--text-primary)]"
                 >
                   Version archive
+                </Link>
+                <Link
+                  href="/product-updates"
+                  className="rounded-[var(--radius-sm)] px-2.5 py-1.5 text-[12.5px] font-medium text-[var(--text-secondary)] no-underline hover:bg-[var(--surface-hover)] hover:text-[var(--text-primary)]"
+                >
+                  Product updates
                 </Link>
               </nav>
             </div>
