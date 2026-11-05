@@ -1,4 +1,8 @@
-import { ALL_LEGAL_DOCUMENTS, type LegalDocument } from "@emergences/legal";
+import {
+  ALL_LEGAL_DOCUMENTS,
+  draftMarkers,
+  type LegalDocument,
+} from "@emergences/legal";
 
 // The site's own routing and grouping. The package deliberately does not ship a
 // registry, because a registry maps documents to ONE application's URL space —
@@ -36,6 +40,7 @@ const CATEGORY_BY_SLUG: Record<string, Category> = {
   "data-retention": "privacy",
   "do-not-sell": "privacy",
   "website-privacy": "privacy",
+  "neohuman-privacy": "privacy",
   "candidate-privacy": "ai",
   "candidate-rights": "ai",
   "responsible-ai": "ai",
@@ -58,6 +63,19 @@ if (UNCATEGORIZED.length > 0) {
   throw new Error(
     `Documents with no category, so they would not appear on the index: ` +
       `${UNCATEGORIZED.join(", ")}. Add them to CATEGORY_BY_SLUG.`,
+  );
+}
+
+// A drafted document carries [TO CONFIRM: …] / [TO BE DECIDED: …] markers in
+// its text (src/draft.ts). Publishing one would put a drafting note on a legal
+// page, so the build stops instead: merging a draft cannot publish it.
+const DRAFTS = ALL_LEGAL_DOCUMENTS.filter(
+  (doc) => draftMarkers(doc).length > 0,
+).map((doc) => `${doc.slug} (${draftMarkers(doc).length})`);
+if (DRAFTS.length > 0) {
+  throw new Error(
+    `Documents still carrying draft markers, which must not be published: ` +
+      `${DRAFTS.join(", ")}. Resolve every [TO CONFIRM …] and [TO BE DECIDED …].`,
   );
 }
 

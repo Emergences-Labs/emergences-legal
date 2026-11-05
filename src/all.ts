@@ -31,6 +31,7 @@ import { GOV_REQUESTS_DOC } from "./documents/government-requests.js";
 import { IMPRINT_DOC } from "./documents/imprint.js";
 import { MODEL_CARD_DOC } from "./documents/model-card.js";
 import { MODERN_SLAVERY_DOC } from "./documents/modern-slavery.js";
+import { NEOHUMAN_PRIVACY_DOC } from "./documents/neohuman-privacy.js";
 import { PRIVACY_DOC } from "./documents/privacy.js";
 import { REFUNDS_DOC } from "./documents/refunds.js";
 import { RESPONSIBLE_AI_DOC } from "./documents/responsible-ai.js";
@@ -54,6 +55,7 @@ export const ALL_LEGAL_DOCUMENTS: readonly LegalDocument[] = [
   DATA_RETENTION_DOC,
   DO_NOT_SELL_DOC,
   CANDIDATE_PRIVACY_DOC,
+  NEOHUMAN_PRIVACY_DOC,
   ARENA_TERMS_DOC,
   CANDIDATE_RIGHTS_DOC,
   RESPONSIBLE_AI_DOC,

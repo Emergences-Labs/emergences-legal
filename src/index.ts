@@ -64,6 +64,7 @@ export * from "./documents/government-requests.js";
 export * from "./documents/imprint.js";
 export * from "./documents/model-card.js";
 export * from "./documents/modern-slavery.js";
+export * from "./documents/neohuman-privacy.js";
 export * from "./documents/privacy.js";
 export * from "./documents/refunds.js";
 export * from "./documents/responsible-ai.js";
@@ -93,3 +94,4 @@ export {
 export type { TermsBlock, TermsSection } from "./documents/fee-terms.js";
 
 export { ALL_LEGAL_DOCUMENTS, legalDocumentBySlug } from "./all.js";
+export { draftMarkers } from "./draft.js";
