@@ -327,8 +327,8 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
             ["Hosting", "Runs the NeoHuman website and its servers", "Vercel"],
             ["Hosting", "Runs NeoHuman's personal agent", "Railway"],
             ["Database and storage", "Stores your account, conversations, memory and files", "Supabase"],
-            ["AI model routing", "Sends requests to the models that generate answers", "OpenRouter and the model providers it routes to [TO CONFIRM: named providers]"],
-            ["AI model", "Reads your profile during intake, for some accounts", "Google (Gemini API) [TO CONFIRM: whether this direct route is still used]"],
+            ["AI model routing", "Sends requests to the models that generate answers", "OpenRouter, which routes each request to a model from Anthropic, OpenAI, Google or Moonshot AI"],
+            ["AI model", "Reads your profile during intake, for a limited group of accounts in a pilot", "Google (Gemini API)"],
             ["Public profile retrieval", "Retrieves public LinkedIn profiles from links you give us", "Apify, ScrapIn, Crustdata"],
             ["Payments", "Processes purchases", "Stripe"],
             ["Email", "Sends sign-in, notification and invitation emails", "Resend, Loops"],
@@ -348,9 +348,12 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "Some providers process information in the United States and other " +
-            "countries. [TO CONFIRM: the international transfer mechanism, if " +
-            "NeoHuman serves people in the EU, UK or elsewhere.]",
+            "Your information is stored in the United States, and some of our " +
+            "providers may process it in other countries. When information about " +
+            "people in the EEA, the UK or Switzerland is transferred, we rely on " +
+            "the EU–U.S. Data Privacy Framework where a provider is certified, " +
+            "and otherwise on the European Commission's Standard Contractual " +
+            "Clauses (with the UK Addendum).",
         },
       ],
     },
@@ -375,8 +378,11 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
             "we must keep for billing, tax and accounting, such as purchase " +
             "and credit records, for as long as the law requires, linked to as " +
             "little of your personal information as those records need. " +
-            "Copies in backups are removed as the backups expire. [TO CONFIRM: " +
-            "how a restore is requested; how long backups are kept.]",
+            "To restore your account within those 30 days, email " +
+            `${LEGAL_CONTACTS.privacy} from the address on your account. ` +
+            "Deleted information may persist briefly in encrypted backups until " +
+            "those backups rotate out on their normal cycle, after which it is " +
+            "overwritten.",
         },
       ],
     },
@@ -417,9 +423,24 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            `You can also ask for a copy of your information, or to correct ` +
-            `it, at ${LEGAL_CONTACTS.privacy}. [TO CONFIRM: rights wording for ` +
-            `the places NeoHuman serves, such as California and the EU/UK.]`,
+            "Depending on where you live, you may have rights to access, " +
+            "correct, delete, port or restrict your personal information, to " +
+            "object to certain processing, and to withdraw consent. To exercise " +
+            `them, or to ask for a copy of your information, email ` +
+            `${LEGAL_CONTACTS.privacy}. We verify requests, respond within the ` +
+            "period the applicable law requires, and will not discriminate " +
+            "against you for exercising a right.",
+        },
+        {
+          kind: "sub",
+          heading: "California",
+          text:
+            "California residents have rights under the CCPA/CPRA to know, " +
+            "delete and correct personal information, and to opt out of its " +
+            "“sale” or “sharing”. We do not sell personal information and do " +
+            "not share it for cross-context behavioral advertising. NeoHuman " +
+            "treats a Global Privacy Control or Do Not Track signal from your " +
+            "browser as an opt-out of optional analytics.",
         },
       ],
     },
@@ -444,7 +465,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "NeoHuman is not intended for anyone under [TO CONFIRM: 16 or 18], " +
+            "NeoHuman is not intended for anyone under 16, " +
             "and we do not knowingly collect information from them.",
         },
       ],
