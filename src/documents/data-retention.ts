@@ -13,8 +13,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const DATA_RETENTION_VERSION = "2026-09-26";
-export const DATA_RETENTION_EFFECTIVE_DATE = "September 26, 2026";
+export const DATA_RETENTION_VERSION = "2026-11-06";
+export const DATA_RETENTION_EFFECTIVE_DATE = "November 6, 2026";
 
 export const DATA_RETENTION_DOC: LegalDocument = {
   slug: "data-retention",
@@ -27,25 +27,26 @@ export const DATA_RETENTION_DOC: LegalDocument = {
   omitGoverningLaw: true,
   summary: [
     {
-      label: "Keep only as long as needed",
-      text: "Each category has a default period; we delete or de-identify data when it lapses, unless the law requires us to keep it.",
+      label: "Kept until deleted",
+      text: "Account, candidate and assessment data stays until the customer deletes it, the organization is deleted, or a verified deletion request is completed.",
     },
     {
-      label: "Recordings have a clock",
-      text: "Assessment recordings and captured session activity are deleted 12 months after the assessment by default, sooner if the employer chooses, and within 30 days of a candidate's verified request.",
+      label: "Some data clears itself",
+      text: "Short-lived records such as sessions and rate-limit counters are deleted automatically within 30 days, and an AI agent's working state after 30 days of inactivity.",
     },
     {
       label: "You can ask us to delete",
-      text: "Candidates and customers can request deletion; we honor it except for the limited records the law makes us keep.",
+      text: "Candidates and customers can request deletion, including of assessment recordings; we honor it except for the limited records the law makes us keep.",
     },
   ],
   preamble:
-    `We keep personal data only as long as we need it, then delete or ` +
-    `de-identify it. This policy sets the default periods for the main ` +
-    `categories of data on ${PRODUCT_NAME}. For candidate data, the employer ` +
-    `that ran the assessment (the controller) can set a shorter period within ` +
-    `the limits below and can request deletion at any time. Some periods are ` +
-    `floors or ceilings fixed by law and cannot be changed.`,
+    `We keep personal data until it is deleted, and delete or de-identify it ` +
+    `when a customer deletes it, when an organization is deleted, or when we ` +
+    `complete a verified deletion request. A few short-lived categories are ` +
+    `deleted automatically, as the schedule below shows. For candidate data, ` +
+    `the employer that ran the assessment (the controller) can delete it or ` +
+    `ask us to delete it at any time. Records the law requires us to keep are ` +
+    `kept for as long as the law requires.`,
   sections: [
     {
       n: 1,
@@ -56,19 +57,14 @@ export const DATA_RETENTION_DOC: LegalDocument = {
           columns: ["Data", "Default retention", "Notes"],
           rows: [
             [
-              "Candidate assessment data — not hired",
-              "12 months after the hiring decision",
-              "Employer-configurable 6–24 months; a longer “talent pool” only with the candidate's consent.",
-            ],
-            [
-              "Candidate assessment data — hired",
-              "24 months after the hire decision",
-              "Employer-configurable up to employment + 1 year.",
+              "Candidate assessment data (invitations, submissions, decisions)",
+              "Until deleted",
+              "Kept until the employer deletes the assessment or its organization, or until a verified deletion request is completed. On a candidate's request we delete or de-identify the candidate's record.",
             ],
             [
               "Assessment session recordings and captured activity (screen recording, on-screen text, typing, copy and paste, app activity)",
-              "12 months after the assessment",
-              "Employer-configurable to a shorter period. Kept longer only where the law requires (for example, California's four-year rule for hiring records) or under a legal hold. Deleted within 30 days of a candidate's verified request, unless the law requires us to keep it.",
+              "Until deleted",
+              "Deleted when the employer asks us to, or on a candidate's verified request made through the employer or to us — unless the law requires us to keep them (for example, California's four-year rule for hiring records) or they are under a legal hold.",
             ],
             [
               "AI evaluation outputs (scores, reports)",
@@ -76,14 +72,19 @@ export const DATA_RETENTION_DOC: LegalDocument = {
               "Not deleted ahead of the underlying application — these are the selection records.",
             ],
             [
-              "Résumé & professional-profile data",
-              "Résumé follows the candidate record",
-              "Third-party-enriched fields are purged 30 days after the decision if not hired.",
+              "Résumé & profile data",
+              "Follows the candidate record",
+              "",
             ],
             [
               "Customer account & profile",
-              "Life of the subscription; deleted/anonymized within 90 days of account closure",
-              "Subject to billing/tax retention and legal holds.",
+              "Life of the organization",
+              "Deleted when an owner deletes the organization in the product, which starts immediately, or on request. Subject to billing/tax retention and legal holds.",
+            ],
+            [
+              "AI workforce-agent conversations and work",
+              "Life of the organization",
+              "Deleted when the organization is deleted or on request. The agent's internal working state for a conversation is deleted automatically after 30 days of inactivity.",
             ],
             [
               "Billing, invoice & tax records",
@@ -92,13 +93,13 @@ export const DATA_RETENTION_DOC: LegalDocument = {
             ],
             [
               "Security & audit logs",
-              "12 months",
-              "~90 days immediately queryable; longer for finance-relevant trails.",
+              "Life of the organization, then 12 months",
+              "Kept while the organization exists, and deleted 12 months after the organization is deleted.",
             ],
             [
               "Support & email communications",
-              "24 months after the ticket is resolved",
-              "",
+              "Until deleted",
+              "Deleted on request.",
             ],
             [
               "Ephemeral / bookkeeping (sessions, rate-limit buckets)",
@@ -119,11 +120,10 @@ export const DATA_RETENTION_DOC: LegalDocument = {
             "Assessment recordings are among the most sensitive data we hold. " +
             "Before the employer can review a recording, it is screened " +
             "automatically and passages that show personal content are removed. " +
-            "We keep recordings and captured session activity for 12 months after " +
-            "the assessment by default, so the employer can review how the work " +
-            "was done during its hiring process; the employer can choose a shorter " +
-            "period. We delete them within 30 days of a candidate's verified " +
-            "request, unless the law requires us to keep them.",
+            "We keep recordings and captured session activity so the employer can " +
+            "review how the work was done during its hiring process, until the " +
+            "employer asks us to delete them or a candidate's verified deletion " +
+            "request is completed, unless the law requires us to keep them.",
         },
         {
           kind: "callout",
@@ -160,12 +160,12 @@ export const DATA_RETENTION_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "Customer administrators can delete their organization's data in the " +
+            "An organization's owner can delete the organization's data in the " +
             "product, which cascades to associated records and cancels billing, " +
             "and can ask us to delete the assessment recordings and session data " +
             "held for their organization. Candidates can " +
             "request deletion via the employer or us. On a verified request we " +
-            "delete the personal data within the period the law requires, except " +
+            "delete or de-identify the personal data within the period the law requires, except " +
             "where we must retain limited data for legal, tax, security, or " +
             "records-keeping reasons — in which case we isolate it and stop " +
             "actively using it.",

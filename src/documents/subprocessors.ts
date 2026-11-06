@@ -12,8 +12,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const SUBPROCESSORS_VERSION = "2026-09-26";
-export const SUBPROCESSORS_EFFECTIVE_DATE = "September 26, 2026";
+export const SUBPROCESSORS_VERSION = "2026-11-06";
+export const SUBPROCESSORS_EFFECTIVE_DATE = "November 6, 2026";
 
 export const SUBPROCESSORS_DOC: LegalDocument = {
   slug: "subprocessors",
@@ -72,19 +72,24 @@ export const SUBPROCESSORS_DOC: LegalDocument = {
           columns: ["Sub-processor", "Purpose", "Data processed"],
           rows: [
             [
-              "Anthropic",
-              "Primary AI model for assessment and agent work",
-              "Role/candidate content and transcripts in prompts",
+              "OpenRouter, Inc.",
+              "AI model gateway — every AI model request from the platform and the AI workforce agent is sent through it",
+              "Prompts, conversation content, tool inputs and results, and uploaded content",
+            ],
+            [
+              "Google (Vertex AI)",
+              "Runs the Claude models we use, reached through OpenRouter with zero data retention",
+              "The same prompt content as OpenRouter",
             ],
             [
               "Additional model providers",
-              "Optional alternative AI models (e.g. OpenAI, Google), when selected; for candidate assessments see section 3",
-              "The same prompt content as the primary provider",
+              "Other AI models reached through OpenRouter (for example, OpenAI to draft scoring rubrics and Google Gemini to analyze video); for candidate assessments see section 3",
+              "The same prompt content as OpenRouter",
             ],
             [
-              "OpenRouter, Inc.",
-              "AI model gateway/router — selected models and Anthropic-outage failover",
-              "The same prompt content and transcripts as the primary provider",
+              "Anthropic",
+              "File storage and agent sessions used to generate assessments",
+              "Job and company material, assessment files, and instructions for each step",
             ],
             [
               "Code-execution sandboxes",
@@ -92,9 +97,19 @@ export const SUBPROCESSORS_DOC: LegalDocument = {
               "Candidate-submitted code and project files",
             ],
             [
-              "Web-search / enrichment providers",
-              "Agent web search; professional-profile enrichment",
-              "Search queries; a candidate's professional-profile data",
+              "Exa",
+              "Web search for the AI agent and for market and competitor research",
+              "Search queries and web addresses",
+            ],
+            [
+              "Apify",
+              "Reading public LinkedIn profiles: a hiring manager's own profile when they provide it at onboarding, and people a customer asks the agent to research",
+              "A person's LinkedIn profile address or name, and the profile details returned",
+            ],
+            [
+              "Crustdata",
+              "Company and people data lookups for the AI agent's research, where enabled",
+              "Company names, person names or profile addresses, and the data returned",
             ],
           ],
         },
@@ -177,12 +192,22 @@ export const SUBPROCESSORS_DOC: LegalDocument = {
             [
               "Sentry",
               "Error and performance monitoring",
-              "Error traces and request context (PII scrubbed)",
+              "Error traces and request context, with credentials and request bodies removed; may include user and organization identifiers",
             ],
             [
               "Langfuse",
-              "AI trace/observability",
-              "Prompts and model outputs (may include content)",
+              "Tracing of AI workforce-agent runs, to understand and debug what the agent did",
+              "Which steps and tools ran, timings, token usage and cost, and user, organization and session identifiers; depending on configuration, also tool inputs and results and the model's replies, which can include organization and candidate content. Email addresses, names, salary and similar fields are removed before sending",
+            ],
+            [
+              "PostHog",
+              "Product analytics and, where enabled, session replay, with on-screen text masked by default",
+              "Pages visited and actions taken, user and organization identifiers, device and browser data, and masked session recordings",
+            ],
+            [
+              "Slack",
+              "Customer support conversations through Slack Connect, and internal service alerts",
+              "Support messages and the names and workspace details of the people who write them",
             ],
             [
               "Inngest",

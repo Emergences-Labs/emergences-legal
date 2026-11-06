@@ -5,8 +5,8 @@
 // Fee Terms and scoped to this product's actual data footprint (verified against
 // the schema and sub-processor map). Licensed counsel must review before
 // publication — in particular the controller/processor split, the CCPA/CPRA
-// characterization, the People Data Labs (data-broker) sourcing disclosure, and
-// the international-transfer mechanism.
+// characterization, the third-party sourcing disclosure (public LinkedIn profiles
+// read through Apify), and the international-transfer mechanism.
 //
 // Rendered at /legal/privacy by the shared LegalDocumentView. A separate
 // candidate-facing notice (Candidate Privacy Notice, Tier 2) covers the
@@ -17,8 +17,8 @@
 import { DOMAINS, LEGAL_CONTACTS, LEGAL_ENTITY, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const PRIVACY_VERSION = "2026-07-03";
-export const PRIVACY_EFFECTIVE_DATE = "July 3, 2026";
+export const PRIVACY_VERSION = "2026-11-06";
+export const PRIVACY_EFFECTIVE_DATE = "November 6, 2026";
 
 export const PRIVACY_DOC: LegalDocument = {
   slug: "privacy",
@@ -116,6 +116,12 @@ export const PRIVACY_DOC: LegalDocument = {
               "You / your organization",
             ],
             [
+              "Professional profile",
+              "role, team, and employer read from your public LinkedIn profile, when you give us its address during onboarding",
+              "Customer Users",
+              "A third-party data provider, from the address you give",
+            ],
+            [
               "Enterprise directory (SSO/SCIM)",
               "identity-provider subject, verified email domain, directory attributes",
               "Customer Users",
@@ -129,7 +135,7 @@ export const PRIVACY_DOC: LegalDocument = {
             ],
             [
               "Usage & security metadata",
-              "IP address, device/browser, audit and rate-limit logs",
+              "IP address, device/browser, audit and rate-limit logs, product-usage events",
               "Customer Users & Candidates",
               "Automatically",
             ],
@@ -153,9 +159,9 @@ export const PRIVACY_DOC: LegalDocument = {
             ],
             [
               "Résumé & profile",
-              "employment history, headline, summary parsed from a résumé or enriched from a public professional profile",
+              "employment history, headline, and summary from a résumé the Candidate provides",
               "Candidates",
-              "The Candidate / a third-party data provider",
+              "The Candidate",
             ],
             [
               "Evaluation outputs",
@@ -175,11 +181,13 @@ export const PRIVACY_DOC: LegalDocument = {
           kind: "callout",
           label: "Third-party sourcing",
           text:
-            "Some Candidate profile data is enriched from a third-party " +
-            "professional-data provider using a professional-profile URL, rather " +
-            "than collected from the Candidate. Where we obtain personal data " +
-            "indirectly, we provide the transparency the law requires and identify " +
-            "the source category in the Candidate Privacy Notice.",
+            "When a Customer User gives us the address of their own LinkedIn " +
+            "profile during onboarding, we read a few details from that public " +
+            "profile through a third-party data provider rather than asking for " +
+            "them. When a Customer User asks the AI agent to research a company " +
+            "or a person, the agent may read public web pages and public " +
+            "professional profiles through search and data providers. We do not " +
+            "enrich Candidate profiles from third-party data providers.",
         },
       ],
     },
@@ -259,8 +267,10 @@ export const PRIVACY_DOC: LegalDocument = {
           text:
             "We share personal data with vetted service providers who process it " +
             "on our behalf under contract — for hosting, database and storage, " +
-            "authentication, AI model inference, payment processing, email, error " +
-            "monitoring, and code execution. Our current sub-processors are listed " +
+            "authentication, AI model inference, AI tracing and observability, " +
+            "web search and public-profile data, product analytics, payment " +
+            "processing, email, customer support, error monitoring, and code " +
+            "execution. Our current sub-processors are listed " +
             "on the Sub-processors page, which you can subscribe to for change " +
             "notices.",
         },
@@ -310,10 +320,10 @@ export const PRIVACY_DOC: LegalDocument = {
             "and for legitimate business and legal purposes, then delete or " +
             "de-identify it. Customer Users' account data is retained for the life " +
             "of the account and deleted on request or after closure, subject to " +
-            "records we must keep (for example, invoices). For Candidate data, " +
-            "retention is governed by the employer's instructions and our Data " +
-            "Retention & Deletion Policy. Specific retention periods are set out in " +
-            "that Policy.",
+            "records we must keep (for example, invoices). Candidate data is kept " +
+            "until the employer deletes it or asks us to, or until a verified " +
+            "deletion request is completed. Our Data Retention & Deletion Policy " +
+            "says what we delete automatically and what we delete on request.",
         },
       ],
     },
@@ -382,7 +392,13 @@ export const PRIVACY_DOC: LegalDocument = {
             "authentication and session security) and, with consent where " +
             "required, limited analytics and error-monitoring technologies. You " +
             "can manage non-essential cookies through the consent banner and the " +
-            "cookie-preferences link. See our Cookie Policy for details.",
+            "cookie-preferences link. See our Cookie Policy for details. " +
+            "Separately from cookies, our servers record a small number of " +
+            "product-usage events — for example, that a report was opened or an " +
+            "assessment was saved — tied to your user and organization " +
+            "identifiers, to understand how the Platform is used. They may " +
+            "include an internal Candidate record ID, but not a Candidate's " +
+            "name, contact details, or submitted work.",
         },
       ],
     },

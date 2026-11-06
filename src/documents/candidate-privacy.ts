@@ -12,8 +12,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const CANDIDATE_PRIVACY_VERSION = "2026-09-26";
-export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "September 26, 2026";
+export const CANDIDATE_PRIVACY_VERSION = "2026-11-06";
+export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "November 6, 2026";
 
 export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
   slug: "candidate-privacy",
@@ -207,13 +207,13 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "The Employer decides how long to keep your assessment data for its " +
-            "hiring process, within the limits of our Data Retention & Deletion " +
-            "Policy. By default, the recording and the activity captured during " +
-            "an assessment session are deleted 12 months after the assessment, " +
-            "unless the Employer chooses a shorter period, the law requires us to " +
-            "keep them longer, or they are needed for a legal claim. You can ask " +
-            "the Employer, or us, about deletion at any time.",
+            "We keep your assessment data, including the recording and the " +
+            "activity captured during an assessment session, until the Employer " +
+            "deletes it or asks us to, or until we complete a verified request " +
+            "from you to delete it — unless the law requires us to keep it or it " +
+            "is needed for a legal claim. You can ask the Employer, or us, to " +
+            "delete it at any time. Our Data Retention & Deletion Policy has the " +
+            "details.",
         },
       ],
     },
