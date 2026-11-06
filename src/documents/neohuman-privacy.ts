@@ -47,6 +47,10 @@
 //   refused while a paid plan renews; hidden at once; employer access paused,
 //   deleted at the purge), NOT yet on main or live. Publish this policy only
 //   after that branch ships and its migration is applied.
+// - Crustdata is not listed (operator, 2026-11-06: remove it from the product).
+//   On 2026-11-06 it is still live on main as the website's third LinkedIn
+//   fallback and an agent company-data tool; publish only after its removal
+//   ships.
 // =============================================================
 
 import {
@@ -249,7 +253,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
             ["AI model routing", "Sends requests to the models that generate answers", "OpenRouter, which routes each request to a model from Anthropic, OpenAI, Google or Moonshot AI"],
             ["AI model", "Reads your profile during intake, for a limited group of accounts in a pilot", "Google (Gemini API)"],
             ["AI image model", "Draws your illustrated portrait from your photo", "OpenRouter, which routes the request to an image model"],
-            ["Public profile retrieval", "Retrieves public LinkedIn profiles from links you give us", "Apify, ScrapIn, Crustdata"],
+            ["Public profile retrieval", "Retrieves public LinkedIn profiles from links you give us", "Apify, ScrapIn"],
             ["Payments and identity verification", "Processes purchases, and ran identity checks for accounts verified in an earlier version", "Stripe"],
             ["Email", "Sends sign-in, notification and invitation emails", "Resend, Loops"],
             ["Product analytics", "Measures, in aggregate, how features are used", "PostHog, Vercel Analytics"],
