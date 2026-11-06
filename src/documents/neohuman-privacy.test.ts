@@ -1,10 +1,12 @@
 /**
  * NeoHuman Privacy Policy (doc5 G58).
  *
- * Google's OAuth consent screen and brand verification link to this page, and
- * Google reads it for how Google user data is used. The sections below are the
- * ones doc5 names as the close criterion, and the Limited Use statement is
- * checked in the words Google's verification asks for. The deletion clause
+ * NeoHuman uses Google only for sign-in today and has not requested any Google
+ * API data access (operator, 2026-11-06), so the policy carries no Google user
+ * data section; add one, with the Limited Use statement and its test, in the
+ * version that ships the first Google data scope. It promises nothing about
+ * how long AI providers keep requests: their published terms keep them for
+ * abuse monitoring, and only some routes run with zero retention. The deletion clause
  * states the operator's 2026-11-05 decision: deactivate at once, 30 days to
  * change your mind, then delete or anonymise, keeping only records the law or
  * the books require.
@@ -52,7 +54,6 @@ describe("NeoHuman Privacy Policy", () => {
   it.each([
     ["who we are", /^Who we are$/],
     ["connected accounts", /^Connected accounts$/],
-    ["Google user data", /^Google user data$/],
     ["who we share it with", /^Who we share/],
     ["how long we keep it", /^How long we keep/],
     ["how to delete", /^How to delete/],
@@ -71,13 +72,14 @@ describe("NeoHuman Privacy Policy", () => {
     expect(sectionText(/^Connected accounts$/)).toMatch(/disconnect[^.]*at any time/i);
   });
 
-  it("carries the Limited Use statement and the no-model-training commitment", () => {
-    const google = sectionText(/^Google user data$/) as string;
-    expect(google).toMatch(
-      /use and transfer to any other app of information received from Google APIs will adhere to the Google API Services User Data Policy, including the Limited Use requirements/,
-    );
-    expect(google).toContain("https://developers.google.com/terms/api-services-user-data-policy");
-    expect(google).toMatch(/not use Google user data[^.]*train[^.]*(AI|machine learning)/i);
+  it("promises nothing about how long AI providers keep what they are sent", () => {
+    // Provider terms read 2026-11-06 keep requests for abuse monitoring (Google
+    // 55 days, OpenAI up to 30), and zero-retention routing covers only some
+    // calls, so no sentence may say AI processing leaves nothing behind.
+    const text = allText();
+    expect(text).not.toMatch(/zero[- ]data[- ]retention|zero retention/i);
+    expect(text).not.toMatch(/not (be )?retain(ed)?\b[^.]*(processing|provider|model)/i);
+    expect(text).not.toMatch(/(provider|model)s?[^.]*(do|does|will) not (keep|store|retain)/i);
   });
 
   it("states the 30-day window, then deletion or anonymisation, keeping billing and credit records", () => {

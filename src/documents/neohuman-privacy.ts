@@ -4,9 +4,11 @@
 //
 // DRAFTING BASELINE, NOT LEGAL ADVICE. Drafted 2026-11-05 from the NeoHuman
 // code and its doc5 handover (G58) by an AI assistant; not reviewed by counsel.
-// It is the page Google's OAuth consent screen and brand verification will link
-// to, so it carries a Google user data section with the Limited Use statement,
-// which the NeoWork Privacy Policy does not yet have.
+// NeoHuman uses Google only for "Continue with Google" sign-in (Clerk's default
+// openid/email/profile; production config read 2026-11-06 shows no extra
+// scopes), and no Google API data access has been applied for (operator,
+// 2026-11-06). So this version has no Google user data section: add one, with
+// the Limited Use statement, in the version that ships the first Google scope.
 //
 // It is a DRAFT: every `[TO CONFIRM: …]` is a fact the drafter could not
 // verify, every `[TO BE DECIDED: …]` a decision not yet made. The site refuses
@@ -24,6 +26,17 @@
 //   credit records that must be kept; connector data helps the person only and
 //   is never training data.
 // - Google sign-in through Clerk is the only Google data access today.
+// - No promise about how long AI providers keep requests (operator, 2026-11-06):
+//   provider terms keep them for abuse monitoring, and zero retention covers
+//   only some routes. Nor a promise that every provider never trains: read
+//   2026-11-06, Moonshot AI's platform terms allow training unless agreed
+//   otherwise in writing, and the website's routed calls do not ask OpenRouter
+//   to exclude providers that train.
+// - Photos, voice and identity checks (read from the code 2026-11-06): portraits
+//   are painted by an image model from the person's photo; voice input is the
+//   browser's own speech recognition; Stripe Identity (ID plus selfie) ran for
+//   earlier accounts, and NeoHuman keeps the result, the verified name and an
+//   HMAC of the document number. No current page starts a new check.
 // - The first connector, Notion (read-only), is being built, not live.
 // - Vendors are those the NeoHuman code calls; contracts and regions unchecked.
 // - Delete account (read 2026-11-06): built on reskill.neo-human.ai's branch
@@ -42,9 +55,6 @@ import type { LegalDocument } from "../model.js";
 
 export const NEOHUMAN_PRIVACY_VERSION = "2026-11-05";
 export const NEOHUMAN_PRIVACY_EFFECTIVE_DATE = "November 5, 2026";
-
-const GOOGLE_USER_DATA_POLICY =
-  "https://developers.google.com/terms/api-services-user-data-policy";
 
 export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
   slug: "neohuman-privacy",
@@ -121,6 +131,34 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
         },
         {
           kind: "sub",
+          heading: "Photos",
+          text:
+            "If a profile link you give us or a file you upload includes a " +
+            "photo of you, we may use it to create an illustrated portrait for " +
+            "your NeoHuman profile. An AI image model receives the photo to " +
+            "draw the portrait.",
+        },
+        {
+          kind: "sub",
+          heading: "Voice input",
+          text:
+            "If you speak instead of typing, your browser's own speech " +
+            "recognition turns your voice into text, and NeoHuman receives only " +
+            "the text.",
+        },
+        {
+          kind: "sub",
+          heading: "Identity verification",
+          text:
+            "If you verified your identity in an earlier version of NeoHuman, " +
+            "our verification partner, Stripe Identity, checked a government ID " +
+            "and a matching selfie. We keep only the result, the name on the " +
+            "document and a one-way code derived from the document number, " +
+            "which tells us whether the same document was used twice. We never " +
+            "receive the images or keep the number itself.",
+        },
+        {
+          kind: "sub",
           heading: "Information from links you give us",
           text:
             "When you give us a public profile or website link, we retrieve " +
@@ -156,6 +194,13 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
           text:
             "Pages you visit, features you use, error reports, and basic device " +
             "and browser information.",
+        },
+        {
+          kind: "p",
+          text:
+            "Apart from the identity check above, which Stripe performs, we do " +
+            "not analyse faces or voice characteristics, and we do not use your " +
+            "photo or voice to identify you.",
         },
       ],
     },
@@ -263,57 +308,6 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
     },
     {
       n: 5,
-      title: "Google user data",
-      blocks: [
-        {
-          kind: "p",
-          text:
-            "Today NeoHuman receives Google user data only when you choose " +
-            "“Continue with Google” to sign in: your name, email address and " +
-            "profile picture. We use them to create and identify your account " +
-            "and to show your name and picture in NeoHuman.",
-        },
-        {
-          kind: "p",
-          text:
-            "If we offer connections to other Google services, such as files " +
-            "you pick from Google Drive, we will ask for your permission on " +
-            "Google's own screen, request only the access the feature needs, " +
-            "and use the data only to provide the feature you turned on.",
-        },
-        {
-          kind: "callout",
-          label: "Limited Use",
-          text:
-            "NeoHuman's use and transfer to any other app of information " +
-            "received from Google APIs will adhere to the Google API Services " +
-            "User Data Policy, including the Limited Use requirements. The " +
-            `policy is published at ${GOOGLE_USER_DATA_POLICY}.`,
-        },
-        {
-          kind: "list",
-          items: [
-            "We use Google user data only to provide or improve the user-facing features you asked for.",
-            "We do not transfer Google user data to others except as needed to provide those features, for security, to comply with the law, or as part of a merger, acquisition or sale of assets with your explicit prior consent.",
-            "We do not use Google user data for advertising, and we do not sell it.",
-            "We do not allow humans to read Google user data, except with your permission for specific content, for security (such as investigating abuse), to comply with the law, or for internal operations where the data is aggregated and anonymised.",
-            "We do not use Google user data to develop, improve or train generalized AI or machine learning models.",
-          ],
-        },
-        {
-          kind: "p",
-          text:
-            "When NeoHuman uses content from a Google service to answer you, " +
-            "the relevant parts are sent to the AI model provider that " +
-            "generates the answer, only to produce that answer. [TO CONFIRM: " +
-            "written terms from the model-routing service and model providers " +
-            "that such content is not retained beyond processing or used for " +
-            "training.]",
-        },
-      ],
-    },
-    {
-      n: 6,
       title: "Who we share it with",
       blocks: [
         {
@@ -334,8 +328,9 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
             ["Database and storage", "Stores your account, conversations, memory and files", "Supabase"],
             ["AI model routing", "Sends requests to the models that generate answers", "OpenRouter, which routes each request to a model from Anthropic, OpenAI, Google or Moonshot AI"],
             ["AI model", "Reads your profile during intake, for a limited group of accounts in a pilot", "Google (Gemini API)"],
+            ["AI image model", "Draws your illustrated portrait from your photo", "OpenRouter, which routes the request to an image model"],
             ["Public profile retrieval", "Retrieves public LinkedIn profiles from links you give us", "Apify, ScrapIn, Crustdata"],
-            ["Payments", "Processes purchases", "Stripe"],
+            ["Payments and identity verification", "Processes purchases, and ran identity checks for accounts verified in an earlier version", "Stripe"],
             ["Email", "Sends sign-in, notification and invitation emails", "Resend, Loops"],
             ["Product analytics", "Measures, in aggregate, how features are used", "PostHog, Vercel Analytics"],
             ["Error monitoring", "Records errors so we can fix them", "Sentry"],
@@ -363,7 +358,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 7,
+      n: 6,
       title: "How long we keep it",
       blocks: [
         {
@@ -395,7 +390,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 8,
+      n: 7,
       title: "How to delete",
       blocks: [
         {
@@ -426,9 +421,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
           kind: "sub",
           heading: "A connected account",
           text:
-            "Disconnect it in settings at any time (see “Connected accounts”). " +
-            "For Google, you can also remove NeoHuman's access at " +
-            "https://myaccount.google.com/permissions.",
+            "Disconnect it in settings at any time (see “Connected accounts”).",
         },
         {
           kind: "p",
@@ -455,7 +448,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 9,
+      n: 8,
       title: "Security",
       blocks: [
         {
@@ -469,7 +462,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 10,
+      n: 9,
       title: "Children",
       blocks: [
         {
@@ -481,7 +474,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 11,
+      n: 10,
       title: "Changes to this policy",
       blocks: [
         {
@@ -495,7 +488,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 12,
+      n: 11,
       title: "Contact",
       blocks: [
         {
