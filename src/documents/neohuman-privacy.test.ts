@@ -53,7 +53,6 @@ describe("NeoHuman Privacy Policy", () => {
 
   it.each([
     ["who we are", /^Who we are$/],
-    ["connected accounts", /^Connected accounts$/],
     ["who we share it with", /^Who we share/],
     ["how long we keep it", /^How long we keep/],
     ["how to delete", /^How to delete/],
@@ -68,8 +67,12 @@ describe("NeoHuman Privacy Policy", () => {
     expect(allText()).toContain(LEGAL_CONTACTS.privacy);
   });
 
-  it("says a connected account can be disconnected at any time", () => {
-    expect(sectionText(/^Connected accounts$/)).toMatch(/disconnect[^.]*at any time/i);
+  it("describes no account connections while none is live", () => {
+    // Operator 2026-11-06: leave Notion out of this version and add it, in a
+    // new version, when the first connection ships. Until then no sentence
+    // may describe connecting, reading or disconnecting another account.
+    const text = [allText(), doc.description, ...(doc.summary ?? []).map((p) => `${p.label} ${p.text}`)].join("\n");
+    expect(text).not.toMatch(/notion|connected[- ]account|connect (an|other) account|disconnect/i);
   });
 
   it("promises nothing about how long AI providers keep what they are sent", () => {

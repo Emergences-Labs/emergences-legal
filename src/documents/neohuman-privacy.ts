@@ -23,8 +23,12 @@
 // - Operator decisions: entity Emergences AI, Inc.; contact through
 //   LEGAL_CONTACTS; account deletion deactivates at once, keeps a 30-day window
 //   to change your mind, then deletes or anonymises, keeping only billing and
-//   credit records that must be kept; connector data helps the person only and
-//   is never training data.
+//   credit records that must be kept.
+// - No account connections in this version (operator, 2026-11-06): Notion is
+//   not live, so the Connected accounts section, and with it the open question
+//   of what happens to stored credentials on disconnect, return in the version
+//   that ships the first connection. The operator's 2026-11-04 rule for that
+//   section: connector data helps the person only and is never training data.
 // - Google sign-in through Clerk is the only Google data access today.
 // - No promise about how long AI providers keep requests (operator, 2026-11-06):
 //   provider terms keep them for abuse monitoring, and zero retention covers
@@ -37,7 +41,6 @@
 //   browser's own speech recognition; Stripe Identity (ID plus selfie) ran for
 //   earlier accounts, and NeoHuman keeps the result, the verified name and an
 //   HMAC of the document number. No current page starts a new check.
-// - The first connector, Notion (read-only), is being built, not live.
 // - Vendors are those the NeoHuman code calls; contracts and regions unchecked.
 // - Delete account (read 2026-11-06): built on reskill.neo-human.ai's branch
 //   claude/account-deletion (Settings > Account > Your account; typed email;
@@ -61,18 +64,14 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
   scope: "neohuman",
   title: "NeoHuman Privacy Policy",
   description:
-    "What NeoHuman collects, how it uses your information and the accounts " +
-    "you connect, who it shares it with, and how to delete it.",
+    "What NeoHuman collects, how it uses your information, who it shares it " +
+    "with, and how to delete it.",
   version: NEOHUMAN_PRIVACY_VERSION,
   effectiveDate: NEOHUMAN_PRIVACY_EFFECTIVE_DATE,
   summary: [
     {
       label: "Only to help you",
-      text: "What you share and what NeoHuman reads from accounts you connect is used to help you with your own career. It is not sold, and connected-account content is not used to train AI models.",
-    },
-    {
-      label: "Read-only connections",
-      text: "Connected accounts are read only when NeoHuman needs them to answer you, and you can disconnect them at any time.",
+      text: "What you share with NeoHuman is used to help you with your own career. It is not sold, and it is not used for advertising.",
     },
     {
       label: "Deletion you can undo, then real",
@@ -175,13 +174,6 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
         },
         {
           kind: "sub",
-          heading: "Content from connected accounts",
-          text:
-            "If you connect an account, the content NeoHuman reads from it to " +
-            "answer you (see “Connected accounts”).",
-        },
-        {
-          kind: "sub",
           heading: "Payments",
           text:
             "If you buy credits or a plan, our payment processor handles your " +
@@ -236,78 +228,6 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
     },
     {
       n: 4,
-      title: "Connected accounts",
-      blocks: [
-        {
-          kind: "p",
-          text:
-            "You can choose to connect other accounts so NeoHuman can use your " +
-            "own notes and documents when helping you. The first connection is " +
-            "Notion, with read-only access. [TO CONFIRM: no connection is live " +
-            "on 2026-11-05; publish this section only once Notion is, or " +
-            "reword it as planned, and check every point below against the " +
-            "shipped feature.]",
-        },
-        {
-          kind: "sub",
-          heading: "Read-only, and only when needed",
-          text:
-            "NeoHuman reads from a connected account only when it needs to " +
-            "answer something you asked, and tells you where the information " +
-            "came from. It cannot create, change or delete anything there.",
-        },
-        {
-          kind: "sub",
-          heading: "Not added to your memory unless you ask",
-          text:
-            "Content read from a connected account is not added to what " +
-            "NeoHuman remembers about you unless you explicitly ask it to. A " +
-            "copy of what was read may be kept with that conversation as the " +
-            "record of the answer's source, and is deleted with the " +
-            "conversation. [TO CONFIRM: the agent keeps a snapshot of a Notion " +
-            "page it reads as a file of the session; confirm it is deleted " +
-            "with the session.]",
-        },
-        {
-          kind: "sub",
-          heading: "Only to help you",
-          text:
-            "We use content from connected accounts only to help you with your " +
-            "own career. We do not use it to train AI models, and we do not " +
-            "use it for anyone else.",
-        },
-        {
-          kind: "sub",
-          heading: "You can disconnect at any time",
-          text:
-            "You can disconnect a connected account at any time in NeoHuman's " +
-            "settings, under Connections, or remove NeoHuman's access from the " +
-            "connected service's own settings. After you disconnect, NeoHuman " +
-            "can no longer read from that account. [TO CONFIRM: settings has no " +
-            "Connections section yet.] [TO BE DECIDED: what happens to the " +
-            "stored access credentials on disconnect, for example deleted at " +
-            "once and revoked with the provider.]",
-        },
-        {
-          kind: "sub",
-          heading: "Your workplace may control access",
-          text:
-            "If you connect an account provided by your employer or school, " +
-            "its administrators may limit or remove NeoHuman's access, and the " +
-            "content may belong to them. Connect only accounts you are allowed " +
-            "to use this way.",
-        },
-        {
-          kind: "p",
-          text:
-            "Access credentials for connected accounts are stored encrypted " +
-            "and used only by NeoHuman's own systems to read on your behalf. " +
-            "[TO CONFIRM: the credential store is not built yet.]",
-        },
-      ],
-    },
-    {
-      n: 5,
       title: "Who we share it with",
       blocks: [
         {
@@ -358,7 +278,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 6,
+      n: 5,
       title: "How long we keep it",
       blocks: [
         {
@@ -377,7 +297,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
             "information. For 30 days you can change your mind and " +
             "ask us to restore it. After 30 days we delete or anonymise your " +
             "personal information, including your profile, conversations, " +
-            "memory, files and connected-account access. We keep only records " +
+            "memory and files. We keep only records " +
             "we must keep for billing, tax and accounting, such as purchase " +
             "and credit records, for as long as the law requires, linked to as " +
             "little of your personal information as those records need. " +
@@ -390,7 +310,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 7,
+      n: 6,
       title: "How to delete",
       blocks: [
         {
@@ -418,12 +338,6 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
             "NeoHuman to remember and remove any item.",
         },
         {
-          kind: "sub",
-          heading: "A connected account",
-          text:
-            "Disconnect it in settings at any time (see “Connected accounts”).",
-        },
-        {
           kind: "p",
           text:
             "Depending on where you live, you may have rights to access, " +
@@ -448,21 +362,20 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 8,
+      n: 7,
       title: "Security",
       blocks: [
         {
           kind: "p",
           text:
             "We protect your information with access controls and encryption " +
-            "in transit, and connected-account credentials are encrypted at " +
-            "rest. No service is perfectly secure; if a breach affects you, we " +
+            "in transit. No service is perfectly secure; if a breach affects you, we " +
             "will tell you as the law requires.",
         },
       ],
     },
     {
-      n: 9,
+      n: 8,
       title: "Children",
       blocks: [
         {
@@ -474,7 +387,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 10,
+      n: 9,
       title: "Changes to this policy",
       blocks: [
         {
@@ -488,7 +401,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
       ],
     },
     {
-      n: 11,
+      n: 10,
       title: "Contact",
       blocks: [
         {
