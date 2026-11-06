@@ -26,6 +26,11 @@
 // - Google sign-in through Clerk is the only Google data access today.
 // - The first connector, Notion (read-only), is being built, not live.
 // - Vendors are those the NeoHuman code calls; contracts and regions unchecked.
+// - Delete account (read 2026-11-06): built on reskill.neo-human.ai's branch
+//   claude/account-deletion (Settings > Account > Your account; typed email;
+//   refused while a paid plan renews; hidden at once; employer access paused,
+//   deleted at the purge), NOT yet on main or live. Publish this policy only
+//   after that branch ships and its migration is applied.
 // =============================================================
 
 import {
@@ -371,7 +376,10 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
           kind: "p",
           text:
             "When you delete your account, it is deactivated at once and you " +
-            "can no longer sign in. For 30 days you can change your mind and " +
+            "can no longer sign in. Your public profile and results are hidden " +
+            "from others at once, and any access you gave an employer to your " +
+            "results is paused, then removed with the rest of your " +
+            "information. For 30 days you can change your mind and " +
             "ask us to restore it. After 30 days we delete or anonymise your " +
             "personal information, including your profile, conversations, " +
             "memory, files and connected-account access. We keep only records " +
@@ -394,11 +402,13 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
           kind: "sub",
           heading: "Your account",
           text:
-            "In settings, under Account, choose Delete account. Your account " +
-            "is deactivated at once, and after 30 days your personal " +
-            `information is deleted or anonymised as described above. You can ` +
-            `also email ${LEGAL_CONTACTS.privacy} from the address on your ` +
-            "account. [TO CONFIRM: the Delete account control is being built.]",
+            "In settings, under Account, choose Delete account and type the " +
+            "email address on your account to confirm. Your account is " +
+            "deactivated at once and you are signed out on every device, and " +
+            "after 30 days your personal information is deleted or anonymised " +
+            "as described above. If a paid plan is still set to renew, cancel " +
+            "it in Billing first. You can also email " +
+            `${LEGAL_CONTACTS.privacy} from the address on your account.`,
         },
         {
           kind: "sub",
