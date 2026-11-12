@@ -13,8 +13,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const DATA_RETENTION_VERSION = "2026-11-06";
-export const DATA_RETENTION_EFFECTIVE_DATE = "November 6, 2026";
+export const DATA_RETENTION_VERSION = "2026-11-12";
+export const DATA_RETENTION_EFFECTIVE_DATE = "November 12, 2026";
 
 export const DATA_RETENTION_DOC: LegalDocument = {
   slug: "data-retention",
@@ -65,6 +65,11 @@ export const DATA_RETENTION_DOC: LegalDocument = {
               "Assessment session recordings and captured activity (screen recording, on-screen text, typing, copy and paste, app activity)",
               "Until deleted",
               "Deleted when the employer asks us to, or on a candidate's verified request made through the employer or to us — unless the law requires us to keep them (for example, California's four-year rule for hiring records) or they are under a legal hold.",
+            ],
+            [
+              "Live call records, where an assessment includes a call (the transcript, and what the evaluation quoted from it)",
+              "Until deleted",
+              "Deleted with the candidate's other assessment data: when the employer asks us to, or on a candidate's verified request. The provider that runs the call keeps its own recording and transcript; that copy is not removed by our deletion and takes a separate request to the provider.",
             ],
             [
               "AI evaluation outputs (scores, reports)",
@@ -124,6 +129,15 @@ export const DATA_RETENTION_DOC: LegalDocument = {
             "review how the work was done during its hiring process, until the " +
             "employer asks us to delete them or a candidate's verified deletion " +
             "request is completed, unless the law requires us to keep them.",
+        },
+        {
+          kind: "p",
+          text:
+            "Where an assessment includes a live call, the candidate's voice " +
+            "and camera video are processed while the call runs so that the AI " +
+            "can hold the conversation, and the provider that runs the call " +
+            "records and transcribes it. We keep the transcript. We do not keep " +
+            "the recording ourselves.",
         },
         {
           kind: "callout",

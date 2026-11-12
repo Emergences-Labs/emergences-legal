@@ -14,8 +14,8 @@
 import { PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const MODEL_CARD_VERSION = "2026-07-03";
-export const MODEL_CARD_EFFECTIVE_DATE = "July 3, 2026";
+export const MODEL_CARD_VERSION = "2026-11-12";
+export const MODEL_CARD_EFFECTIVE_DATE = "November 12, 2026";
 
 export const MODEL_CARD_DOC: LegalDocument = {
   slug: "model-card",
@@ -92,6 +92,15 @@ export const MODEL_CARD_DOC: LegalDocument = {
             "and tools used, input behavior, the submitted files (the deliverable), " +
             "and the process/event timeline. It does not take, request, or infer " +
             "protected characteristics.",
+        },
+        {
+          kind: "p",
+          text:
+            "Where an assessment includes a live call, a separate step reads the " +
+            "call's transcript against a list the employer set and notes, item " +
+            "by item, whether each thing happened, quoting the transcript. That " +
+            "step produces no score and does not change the evaluation of the " +
+            "written work.",
         },
       ],
     },

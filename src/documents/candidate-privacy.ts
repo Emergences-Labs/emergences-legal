@@ -7,13 +7,24 @@
 // written to THEM, in plain language, at the point of collection. The employer
 // is the controller; NeoWork is the processor. Counsel to review — especially
 // the Art 14 third-party-source disclosure and the automated-decision framing.
+//
+// LIVE CALL (2026-11-12). Some assessments now include one live call with an
+// AI, in the candidate's browser, using their camera and microphone. The
+// notice says so and says what the call leaves behind. For counsel:
+//   1. The provider that runs the call keeps its own recording and transcript,
+//      and its API offers no way to delete them. The notice states that the
+//      provider keeps a copy; it makes no promise about that copy's deletion.
+//   2. The candidate agrees to the call being recorded on the screen shown
+//      before the assessment starts. Check that wording against call-recording
+//      consent laws and biometric-privacy laws (video and voice reach an AI
+//      model; nothing is used to identify the candidate).
 // =============================================================
 
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const CANDIDATE_PRIVACY_VERSION = "2026-11-06";
-export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "November 6, 2026";
+export const CANDIDATE_PRIVACY_VERSION = "2026-11-12";
+export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "November 12, 2026";
 
 export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
   slug: "candidate-privacy",
@@ -66,6 +77,7 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
             "Identity verification — we store only the verification status and timestamps. Your documents and biometric data stay with our verification partner (Stripe Identity), which shows you its own consent and retention notice in the flow.",
             "Your work — the files, code, project, or video you submit for the assessment.",
             "A record of your assessment session, including how you worked with AI tools during the task — described in detail below.",
+            "A live call, if your assessment includes one — the audio and video of the call while it runs, a recording of it, and a transcript of what was said.",
             "Professional background — details from a résumé you provide or, where applicable, from a public professional profile.",
             "The evaluation the platform generates about your work.",
             "Your pseudonymous handle, where you keep the public-profile option on.",
@@ -82,9 +94,24 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
             `you type and what you copy and paste; and information about files ` +
             `you create, change, or submit while you work. This is how the ` +
             `Employer sees how you worked, including how you used AI tools. The ` +
-            `app never turns on your camera or microphone. Capture starts when ` +
-            `you begin the assessment and stops when you finish, and nothing is ` +
-            `captured while you pause.`,
+            `app itself never turns on your camera or microphone. Capture starts ` +
+            `when you begin the assessment and stops when you finish, and nothing ` +
+            `is captured while you pause.`,
+        },
+        {
+          kind: "sub",
+          heading: "If your assessment includes a live call",
+          text:
+            `Some assessments include one short live call. You are told before ` +
+            `you start if yours does. You join the call in your browser, and ` +
+            `you speak with an AI system that plays someone from the job, not ` +
+            `with a person. The call uses your camera and microphone, and they ` +
+            `are used only during that call. The call is recorded and ` +
+            `transcribed, and the provider that runs it keeps its own copy of ` +
+            `the recording and the transcript. The screen recording described ` +
+            `above continues during the call, so it can show the call page, ` +
+            `including your own picture. You can complete the written work ` +
+            `without joining the call; the call is then not evaluated.`,
         },
       ],
     },
@@ -156,7 +183,17 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           kind: "p",
           text:
             "If your assessment includes a guide you can chat with, that guide " +
-            "is an AI system, not a person.",
+            "is an AI system, not a person. So is the person you speak with on " +
+            "a live call.",
+        },
+        {
+          kind: "p",
+          text:
+            "If your assessment includes a live call, AI reads its transcript " +
+            "and notes, for each item on a list the Employer set, whether it " +
+            "happened on the call, with quotes from the transcript as the " +
+            "evidence. It gives the call no score and no ranking, and the call " +
+            "does not change the evaluation of your written work.",
         },
       ],
     },
@@ -208,7 +245,8 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           kind: "p",
           text:
             "We keep your assessment data, including the recording and the " +
-            "activity captured during an assessment session, until the Employer " +
+            "activity captured during an assessment session and the transcript " +
+            "of a live call, until the Employer " +
             "deletes it or asks us to, or until we complete a verified request " +
             "from you to delete it — unless the law requires us to keep it or it " +
             "is needed for a legal claim. You can ask the Employer, or us, to " +

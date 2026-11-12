@@ -17,8 +17,8 @@
 import { DOMAINS, LEGAL_CONTACTS, LEGAL_ENTITY, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const PRIVACY_VERSION = "2026-11-06";
-export const PRIVACY_EFFECTIVE_DATE = "November 6, 2026";
+export const PRIVACY_VERSION = "2026-11-12";
+export const PRIVACY_EFFECTIVE_DATE = "November 12, 2026";
 
 export const PRIVACY_DOC: LegalDocument = {
   slug: "privacy",
@@ -156,6 +156,12 @@ export const PRIVACY_DOC: LegalDocument = {
               "a recording/replay of the assessment session and AI-tool interactions",
               "Candidates",
               "Automatically during assessment",
+            ],
+            [
+              "Live call",
+              "where an assessment includes a live call with an AI: the audio and video of the call while it runs, its recording, and its transcript",
+              "Candidates",
+              "Automatically during the call",
             ],
             [
               "Résumé & profile",
