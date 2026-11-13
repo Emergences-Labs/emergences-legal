@@ -730,10 +730,15 @@ export const FEE_TERMS_DOC: LegalDocument = {
   slug: "fee-terms",
   scope: "neowork",
   title: "Fee Terms",
+  // 2026-11-13: no longer offered to new customers (the Pro / Max / Ultra plans
+  // are governed by the Terms of Service, Section 5, and the Fee Schedule). Only
+  // the description, the summary and the colophon say so: they sit outside
+  // feeTermsHash(), which keeps every recorded acceptance verifiable.
   description:
-    "How NeoWork charges: a 15% placement success fee per accepted hire and " +
-    "usage credits for platform usage, with revoke, guarantee, and attribution " +
-    "protections.",
+    "The fee terms organizations accepted from July 2026: a 15% placement fee " +
+    "per accepted hire and usage credits, with revoke, guarantee, and " +
+    "attribution protections. Not offered to new customers since November 13, " +
+    "2026.",
   version: FEE_TERMS_VERSION,
   effectiveDate: TERMS_EFFECTIVE_DATE,
   preamble: TERMS_PREAMBLE,
@@ -748,6 +753,14 @@ export const FEE_TERMS_DOC: LegalDocument = {
   // the fee. Nothing here reaches feeTermsHash(), which digests version,
   // preamble and sections only.
   summary: [
+    {
+      label: "Kept for accepted agreements",
+      text:
+        "These terms bind only organizations that accepted them, for the hires " +
+        "recorded under them. Since November 13, 2026, plans and credits are " +
+        "governed by the Terms of Service and the Fee Schedule, and a recruiting " +
+        "fee only by a separately signed recruiting services agreement.",
+    },
     {
       label: "Usage credits",
       text:
@@ -770,7 +783,7 @@ export const FEE_TERMS_DOC: LegalDocument = {
     },
   ],
   colophon:
-    "These Fee Terms, the Fee Schedule, and the Terms of Service together form " +
-    "the Agreement. When we make material changes we will update the version " +
-    "and notify subscribed organizations before the changes take effect.",
+    "For an organization that accepted them, these Fee Terms, the Fee Schedule, " +
+    "and the Terms of Service together form the Agreement. They are not offered " +
+    "to new customers.",
 };
