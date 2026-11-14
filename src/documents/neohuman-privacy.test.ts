@@ -75,6 +75,15 @@ describe("NeoHuman Privacy Policy", () => {
     expect(text).not.toMatch(/notion|connected[- ]account|connect (an|other) account|disconnect/i);
   });
 
+  it("names no provider the product has no data terms with (operator 2026-11-14)", () => {
+    // ScrapIn, Slack and Crustdata have no signed DPA: none is listed, and
+    // the product's own use of each is off (ScrapIn has no production key,
+    // Crustdata was removed). The premise: the provider table is there.
+    const shared = sectionText(/who we share/i);
+    expect(shared).toMatch(/Apify/);
+    for (const name of ["ScrapIn", "Slack", "Crustdata"]) expect(allText(), name).not.toMatch(new RegExp(name, "i"));
+  });
+
   it("promises nothing about how long AI providers keep what they are sent", () => {
     // Provider terms read 2026-11-06 keep requests for abuse monitoring (Google
     // 55 days, OpenAI up to 30), and zero-retention routing covers only some

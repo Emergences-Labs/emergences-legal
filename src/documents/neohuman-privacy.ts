@@ -42,15 +42,19 @@
 //   earlier accounts, and NeoHuman keeps the result, the verified name and an
 //   HMAC of the document number. No current page starts a new check.
 // - Vendors are those the NeoHuman code calls; contracts and regions unchecked.
-// - Delete account (read 2026-11-06): built on reskill.neo-human.ai's branch
-//   claude/account-deletion (Settings > Account > Your account; typed email;
-//   refused while a paid plan renews; hidden at once; employer access paused,
-//   deleted at the purge), NOT yet on main or live. Publish this policy only
-//   after that branch ships and its migration is applied.
+// - Delete account (read 2026-11-06): Settings > Account > Your account; typed
+//   email; refused while a paid plan renews; hidden at once; employer access
+//   paused, deleted at the purge. Live on reskill.neo-human.ai from main
+//   f9a747c42 (2026-11-14), its migrations applied the same day. The day-30
+//   purge is locked until the agent's per-person erase ships (operator,
+//   2026-11-14: publish this policy as is; the first account reaches day 30
+//   in mid-December).
 // - Crustdata is not listed (operator, 2026-11-06: remove it from the product).
-//   On 2026-11-06 it is still live on main as the website's third LinkedIn
-//   fallback and an agent company-data tool; publish only after its removal
-//   ships.
+//   Its removal shipped on reskill.neo-human.ai's main (79677f4f8).
+// - ScrapIn is not listed (operator, 2026-11-14: no DPA signed, remove it). The
+//   website's ScrapIn fallback is off in production: read 2026-11-14, Vercel
+//   production has no SCRAPIN_API_KEY, and without one tryScrapin returns
+//   before any request. Setting that key would make this list wrong.
 // =============================================================
 
 import {
@@ -253,7 +257,7 @@ export const NEOHUMAN_PRIVACY_DOC: LegalDocument = {
             ["AI model routing", "Sends requests to the models that generate answers", "OpenRouter, which routes each request to a model from Anthropic, OpenAI, Google or Moonshot AI"],
             ["AI model", "Reads your profile during intake, for a limited group of accounts in a pilot", "Google (Gemini API)"],
             ["AI image model", "Draws your illustrated portrait from your photo", "OpenRouter, which routes the request to an image model"],
-            ["Public profile retrieval", "Retrieves public LinkedIn profiles from links you give us", "Apify, ScrapIn"],
+            ["Public profile retrieval", "Retrieves public LinkedIn profiles from links you give us", "Apify"],
             ["Payments and identity verification", "Processes purchases, and ran identity checks for accounts verified in an earlier version", "Stripe"],
             ["Email", "Sends sign-in, notification and invitation emails", "Resend, Loops"],
             ["Product analytics", "Measures, in aggregate, how features are used", "PostHog, Vercel Analytics"],
