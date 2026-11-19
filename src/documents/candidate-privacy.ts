@@ -23,8 +23,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const CANDIDATE_PRIVACY_VERSION = "2026-11-12";
-export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "November 12, 2026";
+export const CANDIDATE_PRIVACY_VERSION = "2026-11-19";
+export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "November 19, 2026";
 
 export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
   slug: "candidate-privacy",
@@ -206,8 +206,8 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           text:
             "Your data is used to run and evaluate the assessment for the " +
             "Employer's hiring decision, to keep the assessment secure and fair, " +
-            "and to comply with law. It is not sold, and it is not used to train " +
-            "general-purpose AI models for unrelated purposes.",
+            "and to comply with law. It is not sold, and we never use it to train " +
+            "or fine-tune AI models.",
         },
       ],
     },

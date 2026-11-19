@@ -11,8 +11,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const RESPONSIBLE_AI_VERSION = "2026-07-03";
-export const RESPONSIBLE_AI_EFFECTIVE_DATE = "July 3, 2026";
+export const RESPONSIBLE_AI_VERSION = "2026-11-19";
+export const RESPONSIBLE_AI_EFFECTIVE_DATE = "November 19, 2026";
 
 export const RESPONSIBLE_AI_DOC: LegalDocument = {
   slug: "responsible-ai",
@@ -96,8 +96,8 @@ export const RESPONSIBLE_AI_DOC: LegalDocument = {
           kind: "p",
           text:
             "Assessment data is protected with encryption, access controls, and " +
-            "monitoring, is not sold, and is not used to train general-purpose AI " +
-            "models for unrelated purposes. Our sub-processors are disclosed, and " +
+            "monitoring, and is not sold. We never use it to train or fine-tune AI " +
+            "models. Our sub-processors are disclosed, and " +
             "AI-provider traffic is governed by contract.",
         },
       ],

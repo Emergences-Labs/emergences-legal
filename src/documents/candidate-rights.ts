@@ -11,8 +11,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const CANDIDATE_RIGHTS_VERSION = "2026-07-03";
-export const CANDIDATE_RIGHTS_EFFECTIVE_DATE = "July 3, 2026";
+export const CANDIDATE_RIGHTS_VERSION = "2026-11-19";
+export const CANDIDATE_RIGHTS_EFFECTIVE_DATE = "November 19, 2026";
 
 export const CANDIDATE_RIGHTS_DOC: LegalDocument = {
   slug: "candidate-rights",
@@ -108,9 +108,9 @@ export const CANDIDATE_RIGHTS_DOC: LegalDocument = {
           kind: "p",
           text:
             "You can access the data held about you, correct it, ask for it to be " +
-            "deleted, and object to certain uses. Your assessment data is not sold " +
-            "and is not used to train general-purpose AI models for unrelated " +
-            "purposes. See the Candidate Privacy Notice for how.",
+            "deleted, and object to certain uses. Your assessment data is not sold, " +
+            "and we never use it to train or fine-tune AI models. See the " +
+            "Candidate Privacy Notice for how.",
         },
       ],
     },

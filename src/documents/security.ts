@@ -13,8 +13,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const SECURITY_VERSION = "2026-10-18";
-export const SECURITY_EFFECTIVE_DATE = "October 18, 2026";
+export const SECURITY_VERSION = "2026-11-19";
+export const SECURITY_EFFECTIVE_DATE = "November 19, 2026";
 
 export const SECURITY_DOC: LegalDocument = {
   slug: "security",
@@ -99,8 +99,8 @@ export const SECURITY_DOC: LegalDocument = {
             "Personal data is processed under our Privacy Policy and Data " +
             "Processing Addendum, shared only with the sub-processors we disclose, " +
             "and retained per our Data Retention & Deletion Policy. Candidate " +
-            "assessment content is not sold and is not used to train " +
-            "general-purpose AI models for unrelated purposes.",
+            "assessment content is not sold, and we never use it to train or " +
+            "fine-tune AI models.",
         },
       ],
     },

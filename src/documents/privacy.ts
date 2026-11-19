@@ -17,8 +17,8 @@
 import { DOMAINS, LEGAL_CONTACTS, LEGAL_ENTITY, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const PRIVACY_VERSION = "2026-11-12";
-export const PRIVACY_EFFECTIVE_DATE = "November 12, 2026";
+export const PRIVACY_VERSION = "2026-11-19";
+export const PRIVACY_EFFECTIVE_DATE = "November 19, 2026";
 
 export const PRIVACY_DOC: LegalDocument = {
   slug: "privacy",
@@ -215,8 +215,8 @@ export const PRIVACY_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "We do not sell personal data, and we do not use Candidate assessment " +
-            "content to train general-purpose AI models for unrelated purposes.",
+            "We do not sell personal data, and we never use Candidate assessment " +
+            "content to train or fine-tune AI models.",
         },
       ],
     },
