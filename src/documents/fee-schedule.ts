@@ -19,7 +19,9 @@
 // docs/billing/2026-11-18-pricing-revision.md). Pro and Max only, yearly at ten
 // months' price, Enterprise quoted and invoiced by us, Ultra and its invoice
 // payment retired, three packs at one rate table on both plans, and the limit
-// on open work samples.
+// on open work samples. Later the same day the monthly credits moved to 50,000
+// (Pro) and 160,000 (Max), prices unchanged; the version stays 2026-11-19
+// because a version is a date.
 // =============================================================
 
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
@@ -53,8 +55,8 @@ export const FEE_SCHEDULE_DOC: LegalDocument = {
           kind: "table",
           columns: ["Plan", "Monthly", "Annual (per year)", "Credits each month"],
           rows: [
-            ["Pro", "$399", "$3,990", "40,000"],
-            ["Max", "$1,199", "$11,990", "150,000"],
+            ["Pro", "$399", "$3,990", "50,000"],
+            ["Max", "$1,199", "$11,990", "160,000"],
           ],
         },
         {
