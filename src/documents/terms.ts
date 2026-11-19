@@ -20,13 +20,20 @@
 // fee now arises only under a separately signed recruiting services agreement
 // (product decision record: neowork-hiring
 // docs/billing/2026-11-13-subscription-tiers.md, decision 14).
+//
+// 2026-11-19: the pricing revision (neowork-hiring
+// docs/billing/2026-11-18-pricing-revision.md). Two self-serve plans, Pro and
+// Max; Enterprise is a yearly agreement we quote and invoice; Ultra is retired,
+// and with it the self-serve payment by invoice. Monthly credits wait for the
+// period's payment, packs and automatic recharge share one rate table on every
+// plan, and a plan limits how many work samples are open at once.
 // =============================================================
 
 import { GOVERNING_LAW, LEGAL_CONTACTS, LEGAL_ENTITY, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const TERMS_VERSION = "2026-11-13";
-export const TERMS_EFFECTIVE_DATE = "November 13, 2026";
+export const TERMS_VERSION = "2026-11-19";
+export const TERMS_EFFECTIVE_DATE = "November 19, 2026";
 
 export const TERMS_DOC: LegalDocument = {
   slug: "terms",
@@ -200,12 +207,14 @@ export const TERMS_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "The Customer may subscribe to a plan (Pro, Max, or Ultra), billed " +
+            "The Customer may subscribe to a self-serve plan (Pro or Max), billed " +
             "monthly or annually at the prices in the Fee Schedule and on the " +
             "checkout screen, which controls if they differ. Fees are charged in " +
             "advance for each billing period and are exclusive of taxes, which " +
             "the Customer pays except taxes on our net income. Seats are not " +
-            "limited on any plan.",
+            "limited on any plan. Enterprise is not sold self-serve: it is a " +
+            "yearly agreement that we quote and invoice, governed by the order " +
+            "form the Customer signs.",
         },
         {
           kind: "sub",
@@ -220,24 +229,16 @@ export const TERMS_DOC: LegalDocument = {
         },
         {
           kind: "sub",
-          heading: "Payment by invoice",
-          text:
-            "Where the checkout screen offers it (currently the Ultra plan billed " +
-            "annually), the Customer may pay by invoice instead of by card. The " +
-            "plan starts on subscription and the invoice is payable within thirty " +
-            "(30) days of issue. The plan's monthly credits are granted once the " +
-            "invoice is paid. We may suspend the plan while an invoice is overdue.",
-        },
-        {
-          kind: "sub",
           heading: "Usage credits",
           text:
             "Platform usage is metered in usage credits drawn from one balance per " +
             "organization, and the credits an action uses reflect its underlying " +
             "compute. Each plan grants the monthly credits stated in the Fee " +
             "Schedule once for each month of the plan, including each month of an " +
-            "annual plan. Credits do not expire and stay with the Customer's " +
-            "organization; credits the Customer holds when a plan ends remain " +
+            "annual plan. The credits for a billing period are granted only once " +
+            "that period's payment has succeeded, so a renewal's credits arrive " +
+            "after its charge succeeds. Credits do not expire and stay with the " +
+            "Customer's organization; credits the Customer holds when a plan ends remain " +
             "usable after cancellation. Credits have no cash value, are redeemable " +
             "only for Platform usage, are not transferable, and are not refundable " +
             "except where the law requires. When the balance reaches zero, usage " +
@@ -260,13 +261,13 @@ export const TERMS_DOC: LegalDocument = {
           heading: "Credit packs and automatic recharge",
           text:
             "While a plan is active, the Customer may buy additional credits in " +
-            "packs at its plan's rate, with the volume terms shown at checkout. " +
-            "The Customer may turn on automatic recharge, which buys credits at " +
-            "its plan's rate when the balance falls below a threshold the Customer " +
-            "sets, charging the saved payment method, up to a monthly limit the " +
-            "Customer sets. Automatic recharge can be turned off at any time. A " +
-            "failed recharge stops further recharges and does not withdraw credits " +
-            "already held.",
+            "packs at the rates in the Fee Schedule, which are the same on every " +
+            "plan. The Customer may turn on automatic recharge, which buys credits " +
+            "at the same rates when the balance falls below a threshold the " +
+            "Customer sets, for an amount the Customer sets, charging the saved " +
+            "payment method, up to a monthly limit the Customer sets. Automatic " +
+            "recharge can be turned off at any time. A failed recharge stops " +
+            "further recharges and does not withdraw credits already held.",
         },
         {
           kind: "sub",
@@ -274,11 +275,22 @@ export const TERMS_DOC: LegalDocument = {
           text:
             "The Customer may change plans from billing settings, where the amount " +
             "due is shown before the change is confirmed. An upgrade takes effect " +
-            "immediately and grants the difference in that month's credits. A " +
-            "downgrade does not remove credits already granted. Features are " +
+            "immediately and, once it is paid, grants the difference in that " +
+            "month's credits. A downgrade does not remove credits already " +
+            "granted. Features are " +
             "available according to the plan, as listed in the Fee Schedule; a " +
             "feature an organization was already using before the plans launched " +
             "on November 13, 2026 remains available to it.",
+        },
+        {
+          kind: "sub",
+          heading: "Open work samples",
+          text:
+            "Each plan limits how many work samples an organization may have open " +
+            "at the same time, as stated in the Fee Schedule. The limit applies " +
+            "when a work sample is opened: it never closes a work sample that is " +
+            "already open, and publishing a new version of an open work sample " +
+            "does not count as opening another.",
         },
         {
           kind: "sub",

@@ -4,30 +4,37 @@
 //
 // DRAFTING BASELINE, and BILLING-CANON SENSITIVE. Per the billing canon
 // (CLAUDE.md): plan prices are customer-facing;
-// per-credit dollar value, per-report price, markup, and cost are NEVER shown.
+// per-report price, price per person, markup, and cost are NEVER shown.
 // So this schedule states plan prices, each plan's monthly credits (the figure
-// the plan cards already print) and its features, and points to the live
-// plan/checkout screens for pack figures. Do NOT add per-credit pricing here.
+// the plan cards already print), its features, and, since 2026-11-19, the
+// pack prices and recharge rates the app's own pack cards print. The
+// one-assessment-is-about-10,000-credits figure is a reading aid, never a charge.
 //
 // 2026-11-13: rewritten for the Pro / Max / Ultra plans. The figures mirror the
 // product's catalogue (neowork-hiring src/lib/billing/subscription-plans.ts and
 // plan-features.ts, themselves held equal to the database); change them there
 // first, then here.
+//
+// 2026-11-19: the pricing revision (neowork-hiring
+// docs/billing/2026-11-18-pricing-revision.md). Pro and Max only, yearly at ten
+// months' price, Enterprise quoted and invoiced by us, Ultra and its invoice
+// payment retired, three packs at one rate table on both plans, and the limit
+// on open work samples.
 // =============================================================
 
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const FEE_SCHEDULE_VERSION = "2026-11-13";
-export const FEE_SCHEDULE_EFFECTIVE_DATE = "November 13, 2026";
+export const FEE_SCHEDULE_VERSION = "2026-11-19";
+export const FEE_SCHEDULE_EFFECTIVE_DATE = "November 19, 2026";
 
 export const FEE_SCHEDULE_DOC: LegalDocument = {
   slug: "fee-schedule",
   scope: "neowork",
   title: "Fee Schedule",
   description:
-    "The Pro, Max, and Ultra plans: prices, monthly credits, features, credit " +
-    "packs, and the trial allowance.",
+    "The Pro and Max plans and Enterprise: prices, monthly credits, features, " +
+    "credit packs, and the trial allowance.",
   version: FEE_SCHEDULE_VERSION,
   effectiveDate: FEE_SCHEDULE_EFFECTIVE_DATE,
   omitGoverningLaw: true,
@@ -46,23 +53,31 @@ export const FEE_SCHEDULE_DOC: LegalDocument = {
           kind: "table",
           columns: ["Plan", "Monthly", "Annual (per year)", "Credits each month"],
           rows: [
-            ["Pro", "$399", "$3,830.40", "40,000"],
-            ["Max", "$799", "$7,670.40", "80,000"],
-            ["Ultra", "$1,599", "$15,350.40", "160,000"],
+            ["Pro", "$399", "$3,990", "40,000"],
+            ["Max", "$1,199", "$11,990", "150,000"],
           ],
         },
         {
           kind: "p",
           text:
-            "Annual billing is twenty percent (20%) less than twelve monthly " +
-            "payments and is charged upfront for the year. Every plan grants its " +
-            "monthly credits once for each month, including each month of an " +
-            "annual plan. Credits do not expire and remain usable after a plan " +
-            "ends. Seats are not limited on any plan. The Ultra plan billed " +
-            "annually may be paid by invoice, due within thirty (30) days. An " +
-            "organization still subscribed to an earlier Starter, Growth, or " +
-            "Enterprise plan keeps that plan's price and terms until the " +
-            "subscription ends or it moves to one of the plans above.",
+            "Annual billing is the price of ten monthly payments, charged upfront " +
+            "for the year. Every plan grants its monthly credits once for each " +
+            "month, including each month of an annual plan, once the payment for " +
+            "the period has succeeded. Credits do not expire and remain usable " +
+            "after a plan ends. Seats are not limited on any plan. Plans renew " +
+            "automatically until cancelled. An organization still subscribed to " +
+            "an earlier Starter, Growth, or Enterprise plan keeps that plan's " +
+            "price and terms until the subscription ends or it moves to one of " +
+            "the plans above.",
+        },
+        {
+          kind: "sub",
+          heading: "Enterprise",
+          text:
+            "Enterprise is a yearly agreement that we quote and invoice under a " +
+            "signed order form. It is not sold in the app, and no plan in the app " +
+            "is paid by invoice. To arrange one, book a call from the plan page " +
+            `in the app or contact ${LEGAL_CONTACTS.legal}.`,
         },
       ],
     },
@@ -72,18 +87,19 @@ export const FEE_SCHEDULE_DOC: LegalDocument = {
       blocks: [
         {
           kind: "table",
-          columns: ["Feature", "Pro", "Max", "Ultra"],
+          columns: ["Feature", "Pro", "Max", "Enterprise"],
           rows: [
             ["Assessments, scoring, and reports", "Included", "Included", "Included"],
+            ["Work samples open at the same time", "2", "10", "Unlimited"],
             ["Unlimited seats", "Included", "Included", "Included"],
-            ["Finding candidates", "—", "Included", "Included"],
-            ["ATS connections", "—", "Included", "Included"],
+            ["Finding candidates", "Included", "Included", "Included"],
+            ["ATS connections", "Included", "Included", "Included"],
             ["Live interview role-play", "—", "Coming soon", "Coming soon"],
             ["SSO, SCIM, and company domains", "—", "—", "Included"],
             ["Audit log", "—", "—", "Included"],
             ["Greenhouse assessment key", "—", "—", "Included"],
             ["Scheduled company research refresh", "—", "—", "Included"],
-            ["New features released to Ultra first", "—", "—", "Included"],
+            ["Early access to new features", "—", "—", "Included"],
           ],
         },
         {
@@ -91,7 +107,10 @@ export const FEE_SCHEDULE_DOC: LegalDocument = {
           text:
             "Scoring is the same on every plan. A feature an organization was " +
             "already using before the plans launched on November 13, 2026 remains " +
-            "available to it whatever its plan.",
+            "available to it whatever its plan. The limit on open work samples " +
+            "applies when a work sample is opened: it never closes one that is " +
+            "already open, and publishing a new version of an open work sample " +
+            "does not count as opening another.",
         },
       ],
     },
@@ -103,14 +122,38 @@ export const FEE_SCHEDULE_DOC: LegalDocument = {
           kind: "p",
           text:
             "Platform usage, including assessments, reports, and AI agent work, " +
-            "is metered in credits drawn from a single balance. Reports are not " +
-            "separately priced and there is no limit on how many assessments you " +
-            "can run. While a plan is active you can buy more credits in packs at " +
-            "your plan's rate: a higher plan gets more credits for each dollar, " +
-            "and larger packs carry a volume bonus. You can also turn on automatic " +
-            "recharge, which buys credits at your plan's rate when your balance " +
-            "falls below a threshold you set, up to a monthly limit you set. " +
-            "Current pack sizes and the credits each buys are shown at checkout.",
+            "is metered in credits drawn from a single balance. No assessment " +
+            "carries a fixed charge, reports are not separately priced, and apart " +
+            "from the limit on open work samples in Section 2 there is no limit " +
+            "on how many assessments you can run. As a guide, one assessment uses " +
+            "about 10,000 credits; this is an estimate, not a price, and the " +
+            "credits an assessment uses vary with the work it involves.",
+        },
+        {
+          kind: "p",
+          text:
+            "While a plan is active you can buy more credits in packs. The packs " +
+            "are the same on every plan, and larger packs buy more credits for " +
+            "each dollar:",
+        },
+        {
+          kind: "table",
+          columns: ["Pack", "Credits"],
+          rows: [
+            ["$500", "50,000"],
+            ["$1,800", "200,000"],
+            ["$4,000", "500,000"],
+          ],
+        },
+        {
+          kind: "p",
+          text:
+            "You can also turn on automatic recharge, which buys credits when your " +
+            "balance falls below a threshold you set, for an amount you set from " +
+            "$200 to $10,000, up to a monthly limit you set. Automatic recharge " +
+            "uses the same rates as the packs: $100 for each 10,000 credits on a " +
+            "purchase below $1,800, $90 from $1,800, and $80 from $4,000, rounded " +
+            "down to a whole credit.",
         },
       ],
     },
