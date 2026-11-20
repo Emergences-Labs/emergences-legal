@@ -177,9 +177,10 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
             `Some assessments include one live call. You are told before you ` +
             `start if yours does. You join the call in your browser and speak ` +
             `with an AI system that plays someone from the job, not with a ` +
-            `person. The call is run by our provider, Nuance Labs. Your ` +
-            `microphone is needed for the call; your camera stays off unless ` +
-            `you turn it on; and both are used only during the call. If you ` +
+            `person. The call is run by our provider, Nuance Labs ` +
+            `(nuancelabs.ai). Your microphone is needed for the call; your ` +
+            `camera stays off unless you turn it on; and both are used only ` +
+            `for the call. If you ` +
             `choose to share your screen on the call, still images of it are ` +
             `sent to the provider so that the AI can see what you show. We keep ` +
             `the transcript of the call, not its audio or video. The provider ` +
