@@ -12,8 +12,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const SUBPROCESSORS_VERSION = "2026-11-12";
-export const SUBPROCESSORS_EFFECTIVE_DATE = "November 12, 2026";
+export const SUBPROCESSORS_VERSION = "2026-11-20";
+export const SUBPROCESSORS_EFFECTIVE_DATE = "November 20, 2026";
 
 export const SUBPROCESSORS_DOC: LegalDocument = {
   slug: "subprocessors",
@@ -202,9 +202,9 @@ export const SUBPROCESSORS_DOC: LegalDocument = {
               "Error traces and request context, with credentials and request bodies removed; may include user and organization identifiers",
             ],
             [
-              "Langfuse",
+              "LangSmith (LangChain)",
               "Tracing of AI workforce-agent runs, to understand and debug what the agent did",
-              "Which steps and tools ran, timings, token usage and cost, and user, organization and session identifiers; depending on configuration, also tool inputs and results and the model's replies, which can include organization and candidate content. Email addresses, names, salary and similar fields are removed before sending",
+              "Which steps and tools ran, timings, token usage, and user, organization and session identifiers; depending on configuration, also conversation content, tool inputs and results and the model's replies, which can include organization and candidate content. Secrets and email addresses are removed and each field is size-capped before sending",
             ],
             [
               "PostHog",
