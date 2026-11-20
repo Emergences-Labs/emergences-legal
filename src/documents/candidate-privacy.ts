@@ -18,13 +18,31 @@
 //      before the assessment starts. Check that wording against call-recording
 //      consent laws and biometric-privacy laws (video and voice reach an AI
 //      model; nothing is used to identify the candidate).
+//
+// DESKTOP CAPTURE IN FULL (2026-11-20, DRAFT — COUNSEL TO REVIEW, 待律师看).
+// The invitation page now shows only a short version before the candidate
+// agrees (four tiles and a link here), so this notice carries the full list.
+// Each item states what the NeoWork desktop capture code does (desktop 0.3.31),
+// written from the code and checked row by row; the code references are in
+// Emergences-Labs/arena src/lib/invitations/captureDisclosure.js (notice
+// recording_notice.2026-11-20.v4). There is no pause button: quitting the
+// app is the pause, which is how "while paused, nothing is captured" on the
+// invitation page is meant. Section 4's call paragraph now says what the code
+// does: Hiring scores the call for the Employer (call-score.ts), and the
+// competency rating can cite the candidate's words on the call (Arena BARS
+// WORK_SAMPLE_CALL_RULE); the result score does not read the call.
+//   HELD: the live-call part of section 1 (what is recorded, by whom, for how
+//   long, and what the provider derives from video and voice) waits for the
+//   call provider's answers. Our side keeps no call audio or video; the
+//   provider records the session and its API cannot delete it.
+//   Set the version and effective date to the publication date when merged.
 // =============================================================
 
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const CANDIDATE_PRIVACY_VERSION = "2026-11-19";
-export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "November 19, 2026";
+export const CANDIDATE_PRIVACY_VERSION = "2026-11-20";
+export const CANDIDATE_PRIVACY_EFFECTIVE_DATE = "November 20, 2026";
 
 export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
   slug: "candidate-privacy",
@@ -88,15 +106,56 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           kind: "sub",
           heading: "During an assessment session",
           text:
-            `While you take an assessment in the ${PRODUCT_NAME} desktop app, it ` +
-            `records your screen; the apps and windows you use; text shown on ` +
-            `screen that your operating system makes available to the app; what ` +
-            `you type and what you copy and paste; and information about files ` +
-            `you create, change, or submit while you work. This is how the ` +
-            `Employer sees how you worked, including how you used AI tools. The ` +
-            `app itself never turns on your camera or microphone. Capture starts ` +
-            `when you begin the assessment and stops when you finish, and nothing ` +
-            `is captured while you pause.`,
+            `While you take an assessment, the ${PRODUCT_NAME} desktop app records ` +
+            `and sends the following, from when you press Start until you submit. ` +
+            `This is how the Employer sees how you worked, including how you used ` +
+            `AI tools. Before you start, you are shown a short version of this ` +
+            `list, with a link to this notice.`,
+        },
+        {
+          kind: "list",
+          items: [
+            "Your screen — a video of one display. No sound is recorded.",
+            "Every key you press — in every app, each key with the character it typed and when. A password field that your computer marks as secure usually keeps only the timing, or nothing at all. Not every password prompt is marked (a terminal’s, for example), and what you type there is recorded like any other typing.",
+            "What you copy and paste — the full text on your clipboard each time it changes, whichever app put it there, and each time you paste with the keyboard, including text you copied before you pressed Start. Each comes with the app and window in front at that moment (for a paste, the one you paste into). Only text is read, not images or files, and the app is built to skip text that a password manager marks as hidden.",
+            "Text on your screen — the text in the window you are using, read through your computer’s accessibility features and text recognition, including what is in the box you are typing in and the web address in a browser’s address bar. On Windows, text recognition reads that window’s part of the screen, so a notification or another window on top of it is read too. On a Mac, the app may also read a text box in another open app when its text changes.",
+            "Apps, windows and clicks — which app is in front, its window title (a browser’s title often names the page), its icon, and where its program is installed on your computer. For each click: the app, the window and the button or field you clicked, but not where on the screen.",
+            "Your use of AI tools — captured the same way as everything else: your prompts and the answers you see are part of the typing and screen record above, and the AI tools you used are identified from it.",
+            "Screenshots in some assessments — still screenshots of your screen go to an AI in the app (a coach, or an examiner that may ask you questions): about once a minute while you are active, every two minutes while you are still until five minutes pass without input, more often while you type, click, scroll or switch apps, and each time you ask it something.",
+            "Your computer — a random ID for this installation of the app; the app version; your operating system’s exact version, processor type and graphics card model; and, when more than one display is connected, each display’s name and size. The app’s diagnostic log is sent when you open Help or when something goes wrong, which can be before you press Start or after you submit. It can name the apps you used and buttons or fields on screen, and includes the computer’s memory and processor use, sleep and screen-lock times, the folders the app uses (which can contain your user name) and the invitation (your name, the assessment and the Employer). It is built to leave out window titles, typed text and copied text, but an error message or the name of a button or field kept in it can include text from your screen. When you agree to be recorded, and if you move to another computer, your IP address and browser details are stored.",
+          ],
+        },
+        {
+          kind: "p",
+          text:
+            "Not recorded by the desktop app: your microphone, your camera, sound, " +
+            "your network traffic, and files you do not choose to submit. Mouse " +
+            "movement is not logged on its own, but the screen video shows the " +
+            "pointer. A live call, if your assessment includes one, uses your " +
+            "camera and microphone in your browser (see below).",
+        },
+        {
+          kind: "p",
+          text:
+            "To pause, quit the app: quitting stops the recording, and you can " +
+            "come back and continue before the assessment is due. Recording ends " +
+            "within seconds of quitting or submitting: a screen read already " +
+            "under way may finish, and nothing is recorded after that. What was " +
+            "already recorded finishes uploading (after you quit, the next time " +
+            "you open the app).",
+        },
+        {
+          kind: "p",
+          text:
+            "The record is uploaded while you work, and AI models can start " +
+            "analyzing it while you are still working. They analyze it, together " +
+            "with what you submit, to prepare a report for the Employer's hiring " +
+            "team: they can run and test what you submit, judge which text you " +
+            "wrote yourself, score your work, rate your skills on a scale of " +
+            "levels, and flag a submission that breaks a rule of the task, which " +
+            "invalidates it. An AI also checks the recording for private content " +
+            "and decides which parts the hiring team sees, and the hiring team " +
+            "can ask an AI questions about your session.",
         },
         {
           kind: "sub",
@@ -136,9 +195,11 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           kind: "callout",
           label: "Please help",
           text:
-            "Automated screening can miss things. Close personal apps, tabs, and " +
-            "notifications before you start, and pause if something personal " +
-            "comes up.",
+            "Automated screening can miss things. Close personal apps, tabs, " +
+            "messages and notifications before you start, quit the app if " +
+            "something personal comes up, and do not type a real password while " +
+            "you are recording: anything on your screen, and anything you type, " +
+            "may be recorded.",
         },
       ],
     },
@@ -190,10 +251,13 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           kind: "p",
           text:
             "If your assessment includes a live call, AI reads its transcript " +
-            "and notes, for each item on a list the Employer set, whether it " +
+            "(the words and who said them, not the sound or the picture) and " +
+            "notes, for each item on a list the Employer set, whether it " +
             "happened on the call, with quotes from the transcript as the " +
-            "evidence. It gives the call no score and no ranking, and the call " +
-            "does not change the evaluation of your written work.",
+            "evidence. From those notes the Employer is shown a score for the " +
+            "call. What you say on the call can also be quoted as evidence in " +
+            "the rating of your skills. The call does not change the score of " +
+            "the work you submit.",
         },
       ],
     },
