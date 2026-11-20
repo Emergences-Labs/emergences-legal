@@ -36,6 +36,12 @@
 //   call provider's answers. Our side keeps no call audio or video; the
 //   provider records the session and its API cannot delete it.
 //   Set the version and effective date to the publication date when merged.
+//   Which version of this notice a candidate saw is not stored with their
+//   consent. The consent row (arena invite_consent_events) stores the
+//   invitation-page notice version and the time of agreeing, and this site
+//   publishes this repository's main branch, so the git history at that time
+//   gives the text that was in effect. Counsel: say if it must be stored
+//   with each consent instead.
 // =============================================================
 
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
