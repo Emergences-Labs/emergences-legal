@@ -32,7 +32,9 @@
 // competency rating can cite the candidate's words on the call (Arena BARS
 // WORK_SAMPLE_CALL_RULE); the result score does not read the call.
 //   The live-call part of section 1 states only what the code shows
-//   (Interview, Hiring, Arena, read 2026-11-20): the provider is Nuance Labs;
+//   (Interview, Hiring, Arena, read 2026-11-20): the provider (Nuance Labs,
+//   named only on the Sub-processors page, so a change of provider changes
+//   one place; the call screen does not name it either, operator 11/12);
 //   the microphone is required and the camera is off until the candidate
 //   turns it on; a shared screen reaches the provider as still images when
 //   the AI asks to read it; our side keeps the transcript and no audio or
@@ -177,8 +179,8 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
             `Some assessments include one live call. You are told before you ` +
             `start if yours does. You join the call in your browser and speak ` +
             `with an AI system that plays someone from the job, not with a ` +
-            `person. The call is run by our provider, Nuance Labs ` +
-            `(nuancelabs.ai). Your microphone is needed for the call; your ` +
+            `person. The call is run by our call provider (see ` +
+            `Sub-processors). Your microphone is needed for the call; your ` +
             `camera stays off unless you turn it on; and both are used only ` +
             `for the call. If you ` +
             `choose to share your screen on the call, still images of it are ` +
