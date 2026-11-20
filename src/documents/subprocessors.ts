@@ -12,8 +12,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const SUBPROCESSORS_VERSION = "2026-11-12";
-export const SUBPROCESSORS_EFFECTIVE_DATE = "November 12, 2026";
+export const SUBPROCESSORS_VERSION = "2026-11-20";
+export const SUBPROCESSORS_EFFECTIVE_DATE = "November 20, 2026";
 
 export const SUBPROCESSORS_DOC: LegalDocument = {
   slug: "subprocessors",
@@ -157,7 +157,7 @@ export const SUBPROCESSORS_DOC: LegalDocument = {
             [
               "Nuance (nuancelabs.ai)",
               "Running the live call that some assessments include: the AI voice and video the candidate speaks with, and the call's recording and transcript",
-              "The candidate's voice and camera video during the call (and an employer user's own, when they try a call before publishing it), the call's recording and transcript, an identifier in place of the person's name, and the employer's brief for the call",
+              "The candidate's voice, camera video if they turn the camera on, and still images of their screen if they choose to share it, during the call (and an employer user's own, when they try a call before publishing it), the call's recording and transcript, an identifier in place of the person's name, and the employer's brief for the call",
             ],
             [
               "Reducto",

@@ -14,8 +14,8 @@
 import { PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const MODEL_CARD_VERSION = "2026-11-12";
-export const MODEL_CARD_EFFECTIVE_DATE = "November 12, 2026";
+export const MODEL_CARD_VERSION = "2026-11-20";
+export const MODEL_CARD_EFFECTIVE_DATE = "November 20, 2026";
 
 export const MODEL_CARD_DOC: LegalDocument = {
   slug: "model-card",
@@ -98,9 +98,11 @@ export const MODEL_CARD_DOC: LegalDocument = {
           text:
             "Where an assessment includes a live call, a separate step reads the " +
             "call's transcript against a list the employer set and notes, item " +
-            "by item, whether each thing happened, quoting the transcript. That " +
-            "step produces no score and does not change the evaluation of the " +
-            "written work.",
+            "by item, whether each thing happened, quoting the transcript. From " +
+            "those notes the employer is shown a score for the call, and what " +
+            "the candidate said on the call can be quoted as evidence in the " +
+            "competency rating. The call does not change the score of the " +
+            "submitted work.",
         },
       ],
     },

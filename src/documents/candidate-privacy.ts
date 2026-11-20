@@ -19,7 +19,7 @@
 //      consent laws and biometric-privacy laws (video and voice reach an AI
 //      model; nothing is used to identify the candidate).
 //
-// DESKTOP CAPTURE IN FULL (2026-11-20, DRAFT — COUNSEL TO REVIEW, 待律师看).
+// DESKTOP CAPTURE IN FULL (2026-11-20; counsel to review, 待律师看).
 // The invitation page now shows only a short version before the candidate
 // agrees (four tiles and a link here), so this notice carries the full list.
 // Each item states what the NeoWork desktop capture code does (desktop 0.3.31),
@@ -31,11 +31,18 @@
 // does: Hiring scores the call for the Employer (call-score.ts), and the
 // competency rating can cite the candidate's words on the call (Arena BARS
 // WORK_SAMPLE_CALL_RULE); the result score does not read the call.
-//   HELD: the live-call part of section 1 (what is recorded, by whom, for how
-//   long, and what the provider derives from video and voice) waits for the
-//   call provider's answers. Our side keeps no call audio or video; the
-//   provider records the session and its API cannot delete it.
-//   Set the version and effective date to the publication date when merged.
+//   The live-call part of section 1 states only what the code shows
+//   (Interview, Hiring, Arena, read 2026-11-20): the provider is Nuance Labs;
+//   the microphone is required and the camera is off until the candidate
+//   turns it on; a shared screen reaches the provider as still images when
+//   the AI asks to read it; our side keeps the transcript and no audio or
+//   video; the provider records the session (its transcript times count from
+//   its own recording) and its API offers no deletion, so the notice promises
+//   only that we ask it to delete its copy (the DSAR runbook's manual request).
+//   STILL OPEN with the provider, and not stated: how long it keeps the
+//   recording, where, whether it trains on it, and whether anything derived
+//   from video or voice (including its age check) is a biometric identifier.
+//   Version 2026-11-20 is the publication date.
 //   Which version of this notice a candidate saw is not stored with their
 //   consent. The consent row (arena invite_consent_events) stores the
 //   invitation-page notice version and the time of agreeing, and this site
@@ -101,7 +108,7 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
             "Identity verification — we store only the verification status and timestamps. Your documents and biometric data stay with our verification partner (Stripe Identity), which shows you its own consent and retention notice in the flow.",
             "Your work — the files, code, project, or video you submit for the assessment.",
             "A record of your assessment session, including how you worked with AI tools during the task — described in detail below.",
-            "A live call, if your assessment includes one — the audio and video of the call while it runs, a recording of it, and a transcript of what was said.",
+            "A live call, if your assessment includes one — your voice, and your camera video if you turn the camera on, while the call runs; the call provider's recording of the call; and the transcript of what was said.",
             "Professional background — details from a résumé you provide or, where applicable, from a public professional profile.",
             "The evaluation the platform generates about your work.",
             "Your pseudonymous handle, where you keep the public-profile option on.",
@@ -167,15 +174,20 @@ export const CANDIDATE_PRIVACY_DOC: LegalDocument = {
           kind: "sub",
           heading: "If your assessment includes a live call",
           text:
-            `Some assessments include one short live call. You are told before ` +
-            `you start if yours does. You join the call in your browser, and ` +
-            `you speak with an AI system that plays someone from the job, not ` +
-            `with a person. The call uses your camera and microphone, and they ` +
-            `are used only during that call. The call is recorded and ` +
-            `transcribed, and the provider that runs it keeps its own copy of ` +
-            `the recording and the transcript. The screen recording described ` +
-            `above continues during the call, so it can show the call page, ` +
-            `including your own picture. You can complete the written work ` +
+            `Some assessments include one live call. You are told before you ` +
+            `start if yours does. You join the call in your browser and speak ` +
+            `with an AI system that plays someone from the job, not with a ` +
+            `person. The call is run by our provider, Nuance Labs. Your ` +
+            `microphone is needed for the call; your camera stays off unless ` +
+            `you turn it on; and both are used only during the call. If you ` +
+            `choose to share your screen on the call, still images of it are ` +
+            `sent to the provider so that the AI can see what you show. We keep ` +
+            `the transcript of the call, not its audio or video. The provider ` +
+            `records the call and keeps its own recording and transcript under ` +
+            `its own terms; when we delete your call data, we ask the provider ` +
+            `to delete its copy. The screen recording described above continues ` +
+            `during the call, so it can show the call page, including your own ` +
+            `picture if your camera is on. You can complete the written work ` +
             `without joining the call; the call is then not evaluated.`,
         },
       ],

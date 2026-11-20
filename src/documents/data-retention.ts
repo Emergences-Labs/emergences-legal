@@ -13,8 +13,8 @@
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const DATA_RETENTION_VERSION = "2026-11-12";
-export const DATA_RETENTION_EFFECTIVE_DATE = "November 12, 2026";
+export const DATA_RETENTION_VERSION = "2026-11-20";
+export const DATA_RETENTION_EFFECTIVE_DATE = "November 20, 2026";
 
 export const DATA_RETENTION_DOC: LegalDocument = {
   slug: "data-retention",
@@ -69,7 +69,7 @@ export const DATA_RETENTION_DOC: LegalDocument = {
             [
               "Live call records, where an assessment includes a call (the transcript, and what the evaluation quoted from it)",
               "Until deleted",
-              "Deleted with the candidate's other assessment data: when the employer asks us to, or on a candidate's verified request. The provider that runs the call keeps its own recording and transcript; that copy is not removed by our deletion and takes a separate request to the provider.",
+              "Deleted with the candidate's other assessment data: when the employer asks us to, or on a candidate's verified request. The provider that runs the call keeps its own recording and transcript under its own terms; when we delete ours, we ask the provider to delete its copy.",
             ],
             [
               "AI evaluation outputs (scores, reports)",
@@ -133,9 +133,10 @@ export const DATA_RETENTION_DOC: LegalDocument = {
         {
           kind: "p",
           text:
-            "Where an assessment includes a live call, the candidate's voice " +
-            "and camera video are processed while the call runs so that the AI " +
-            "can hold the conversation, and the provider that runs the call " +
+            "Where an assessment includes a live call, the candidate's voice, " +
+            "and camera video if they turn the camera on, are processed while " +
+            "the call runs so that the AI can hold the conversation, and the " +
+            "provider that runs the call " +
             "records and transcribes it. We keep the transcript. We do not keep " +
             "the recording ourselves.",
         },

@@ -17,8 +17,8 @@
 import { DOMAINS, LEGAL_CONTACTS, LEGAL_ENTITY, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const PRIVACY_VERSION = "2026-11-19";
-export const PRIVACY_EFFECTIVE_DATE = "November 19, 2026";
+export const PRIVACY_VERSION = "2026-11-20";
+export const PRIVACY_EFFECTIVE_DATE = "November 20, 2026";
 
 export const PRIVACY_DOC: LegalDocument = {
   slug: "privacy",
@@ -159,7 +159,7 @@ export const PRIVACY_DOC: LegalDocument = {
             ],
             [
               "Live call",
-              "where an assessment includes a live call with an AI: the audio and video of the call while it runs, its recording, and its transcript",
+              "where an assessment includes a live call with an AI: the candidate's voice (and camera video, if they turn the camera on) while the call runs, the call provider's recording of it, and its transcript",
               "Candidates",
               "Automatically during the call",
             ],
