@@ -22,13 +22,16 @@
 // on open work samples. Later the same day the monthly credits moved to 50,000
 // (Pro) and 160,000 (Max), prices unchanged; the version stays 2026-11-19
 // because a version is a date.
+//
+// 2026-11-22: Max keeps 5 work samples open at once, down from 10 (operator:
+// 「Max 改成同时开放 5 个吧」). Nothing else changed.
 // =============================================================
 
 import { LEGAL_CONTACTS, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const FEE_SCHEDULE_VERSION = "2026-11-19";
-export const FEE_SCHEDULE_EFFECTIVE_DATE = "November 19, 2026";
+export const FEE_SCHEDULE_VERSION = "2026-11-22";
+export const FEE_SCHEDULE_EFFECTIVE_DATE = "November 22, 2026";
 
 export const FEE_SCHEDULE_DOC: LegalDocument = {
   slug: "fee-schedule",
@@ -92,7 +95,7 @@ export const FEE_SCHEDULE_DOC: LegalDocument = {
           columns: ["Feature", "Pro", "Max", "Enterprise"],
           rows: [
             ["Assessments, scoring, and reports", "Included", "Included", "Included"],
-            ["Work samples open at the same time", "2", "10", "Unlimited"],
+            ["Work samples open at the same time", "2", "5", "Unlimited"],
             ["Unlimited seats", "Included", "Included", "Included"],
             ["Finding candidates", "Included", "Included", "Included"],
             ["ATS connections", "Included", "Included", "Included"],
