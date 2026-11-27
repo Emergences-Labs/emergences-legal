@@ -13,8 +13,8 @@
 import { GOVERNING_LAW, LEGAL_CONTACTS, LEGAL_ENTITY, PRODUCT_NAME } from "../company.js";
 import type { LegalDocument } from "../model.js";
 
-export const DPA_VERSION = "2026-07-03";
-export const DPA_EFFECTIVE_DATE = "July 3, 2026";
+export const DPA_VERSION = "2026-11-27";
+export const DPA_EFFECTIVE_DATE = "November 27, 2026";
 
 export const DPA_DOC: LegalDocument = {
   slug: "dpa",
@@ -60,6 +60,32 @@ export const DPA_DOC: LegalDocument = {
             "processing, the types of Personal Data, and the categories of Data " +
             "Subjects are described in the Agreement and the Privacy Policy and " +
             "summarized in the processing details annex.",
+        },
+        {
+          kind: "sub",
+          heading: "Processing details",
+          text:
+            "Without limiting the Agreement, the processing covers Personal Data " +
+            "of job candidates and applicants that reaches NeoWork from either " +
+            "source: (a) synced or imported from an applicant tracking system the " +
+            "Customer connects; or (b) uploaded or entered directly in the " +
+            "platform by the Customer's users, including a candidate's résumé or " +
+            "CV and profile links. The subject-matter and purpose are the " +
+            "Customer's recruitment and assessment of those candidates using the " +
+            "services; the nature of the processing is collection, storage, " +
+            "analysis, and display within the services; the duration is the term " +
+            "of the Agreement plus any deletion period it sets.",
+        },
+        {
+          kind: "table",
+          columns: ["Data subjects", "Categories of Personal Data", "Source"],
+          rows: [
+            [
+              "Job candidates and applicants",
+              "contact details; employment history; education; skills and qualifications; and any other information contained in a résumé, CV, or profile",
+              "The Customer's connected applicant tracking system, or upload or entry by the Customer's users",
+            ],
+          ],
         },
       ],
     },
